@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/problemsFragment">
+
+    <fragment
+        android:id="@+id/problemsFragment"
+        android:name="com.example.mvp.ui.fragments.ProblemsFragment"
+        android:label="Problems"
+        tools:layout="@layout/fragment_problems">
+        <action
+            android:id="@+id/action_problemsFragment_to_problemDetailFragment"
+            app:destination="@id/problemDetailFragment" />
+        <action
+            android:id="@+id/action_problemsFragment_to_addProblemFragment"
+            app:destination="@id/addProblemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/problemDetailFragment"
+        android:name="com.example.mvp.ui.fragments.ProblemDetailFragment"
+        android:label="Problem Details">
+        <argument
+            android:name="problem_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_problemDetailFragment_to_addProblemFragment"
+            app:destination="@id/addProblemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addProblemFragment"
+        android:name="com.example.mvp.ui.fragments.AddProblemFragment"
+        android:label="{header}">
+        <action
+            android:id="@+id/action_addProblemFragment_to_addProblemCatFragment"
+            app:destination="@id/addProblemCatFragment" />
+        <argument
+            android:name="problem_id"
+            android:defaultValue="-1"
+            app:argType="integer" />
+        <argument
+            android:name="header"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/addProblemCatFragment"
+        android:name="com.example.mvp.ui.fragments.AddProblemCatFragment"
+        android:label="AddProblemCatFragment">
+        <argument
+            android:name="problem_id"
+            app:argType="integer" />
+        <argument
+            android:name="category"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_addProblemCatFragment_to_problemsFragment"
+            app:destination="@id/problemsFragment"
+            app:popUpTo="@id/problemsFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

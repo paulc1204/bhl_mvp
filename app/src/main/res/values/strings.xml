@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">MVP</string>
+    <string name="problem">Problems</string>
+    <string name="title">Title</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="category">Category</string>
+    <string name="add_new">Add new</string>
+    <string name="next">Next</string>
+    <string name="save">Save</string>
+    <string name="select_category">Categorize your problem</string>
+    <string name="category_work">Work</string>
+    <string name="category_love">Love</string>
+    <string name="category_health">Health</string>
+    <string name="category_business">Business</string>
+    <string name="category_family">Family</string>
+    <string name="category_money">Money</string>
+    <string name="category_friendship">Friendship</string>
+    <string name="category_other">Other</string>
+
+    <string name="add_fragment_title">Add Problem</string>
+    <string name="edit_fragment_title">Edit Problem</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="delete_confirmation">Are you sure you want to delete?</string>
+
+    <string name="lorem_ipsum">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </string>
+
+    <string name="problem_title_req">Title <font color='#FF0000'>*</font></string>
+    <string name="problem_description_req">Description <font color='#FF0000'>*</font></string>
+</resources>

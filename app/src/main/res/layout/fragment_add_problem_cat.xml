@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin"
+        tools:context=".ui.fragments.AddProblemCatFragment">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/select_category"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <RadioGroup
+            android:id="@+id/category_options"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checkedButton="@id/btn_other"
+            app:layout_constraintTop_toBottomOf="@+id/title">
+
+            <RadioButton
+                android:id="@+id/btn_business"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/category_business"/>
+
+            <RadioButton
+                android:id="@+id/btn_work"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/category_work"/>
+
+            <RadioButton
+                android:id="@+id/btn_love"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/category_love"/>
+
+            <RadioButton
+                android:id="@+id/btn_family"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/category_family"/>
+
+            <RadioButton
+                android:id="@+id/btn_friendship"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/category_friendship"/>
+
+            <RadioButton
+                android:id="@+id/btn_money"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/category_money"/>
+
+            <RadioButton
+                android:id="@+id/btn_health"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/category_health"/>
+
+            <RadioButton
+                android:id="@+id/btn_other"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/category_other"/>
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/buttonSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/save"
+            android:layout_marginTop="@dimen/margin_between_elements"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/category_options" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
