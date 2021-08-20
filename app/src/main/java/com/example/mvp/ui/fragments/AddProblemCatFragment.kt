@@ -34,7 +34,6 @@ class AddProblemCatFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.d("onCreateView called", "")
         _binding = FragmentAddProblemCatBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -51,20 +50,27 @@ class AddProblemCatFragment: Fragment() {
             category
         )
 
-       val action = AddProblemCatFragmentDirections.actionAddProblemCatFragmentToProblemsFragment()
+       val action = AddProblemCatFragmentDirections.actionAddProblemCatFragmentToAskSolutionFragment(navigationArgs.problemId)
        findNavController().navigate(action)
     }
 
     private fun updateProblem(category: String){
-        viewModel.updateProblem(
-            problem_id = this.navigationArgs.problemId,
-            title = this.navigationArgs.title,
-            description = this.navigationArgs.description,
-            category = category
+
+        viewModel.updateCategory(
+            title = navigationArgs.title,
+            description = navigationArgs.description,
+            category = category,
+            problem_id = navigationArgs.problemId
         )
 
-       val action = AddProblemCatFragmentDirections.actionAddProblemCatFragmentToProblemsFragment()
-       findNavController().navigate(action)
+        if(problem.solvable!!){
+           val action = AddProblemCatFragmentDirections.actionAddProblemCatFragmentToSolutionsFragment(navigationArgs.problemId)
+            findNavController().navigate(action)
+        }else{
+           val action = AddProblemCatFragmentDirections.actionAddProblemCatFragmentToAskSolutionFragment(navigationArgs.problemId)
+           findNavController().navigate(action)
+        }
+
     }
 
     private fun bindOldProblem(problem: Problem){

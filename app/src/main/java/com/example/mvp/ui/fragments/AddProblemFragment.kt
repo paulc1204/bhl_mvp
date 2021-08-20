@@ -58,7 +58,8 @@ class AddProblemFragment: Fragment() {
                         problemId = problem.problem_id,
                         category = problem.category,
                         title = problemTitle.text.toString(),
-                        description = problemDescription.text.toString()
+                        description = problemDescription.text.toString(),
+                        header = navigationArgs.header
                     )
                     findNavController().navigate(action)
                 }
@@ -80,7 +81,8 @@ class AddProblemFragment: Fragment() {
             val action = AddProblemFragmentDirections.actionAddProblemFragmentToAddProblemCatFragment(
                 problemId = problem.problem_id,
                 title = title,
-                description = description
+                description = description,
+                header = navigationArgs.header
             )
             findNavController().navigate(action)
         }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:descendantFocusability="blocksDescendants">
+
+        <TextView
+            android:id="@+id/solution_title"
+            style="@style/ListItemTextView"
+            android:layout_width="270dp"
+            android:layout_marginStart="@dimen/margin_start"
+            android:ellipsize="end"
+            android:maxLines="1"
+            app:layout_constraintEnd_toStartOf="@+id/solution_tried"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Gardening" />
+
+        <TextView
+            android:id="@+id/solution_tried"
+            style="@style/ListItemTextView"
+            android:layout_width="100dp"
+            android:layout_marginStart="@dimen/margin_between_elements"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@+id/solution_title"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Yes" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

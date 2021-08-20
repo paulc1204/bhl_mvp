@@ -3,6 +3,8 @@ package com.example.mvp.viewmodels
 import androidx.lifecycle.*
 import com.example.mvp.data.entities.Problem
 import com.example.mvp.data.ProblemDao
+import com.example.mvp.data.entities.Solution
+import com.example.mvp.data.relations.ProblemWIthSolutions
 import kotlinx.coroutines.launch
 import java.time.LocalDateTime
 
@@ -10,14 +12,16 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
 
     val problems: LiveData<List<Problem>> = problemDao.getProblems().asLiveData()
 
-    fun updateProblem(
-        problem_id: Int,
-        title: String,
-        description: String,
-        category: String
-    ){
-        val updatedProblem = getUpdatedProblemEntry(problem_id, title, description, category)
-        updateProblem(updatedProblem)
+    fun updateCategory(title: String, description: String, category: String, problem_id: Int){
+        viewModelScope.launch {
+            problemDao.update(title, description, category, problem_id)
+        }
+    }
+
+    fun updateSolvability(solvable: Boolean, problem_id: Int){
+        viewModelScope.launch {
+            problemDao.update(solvable, problem_id)
+        }
     }
 
     private fun updateProblem(problem: Problem){
@@ -26,19 +30,21 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
         }
     }
 
-    private fun getUpdatedProblemEntry(
+    fun updateSolution(
+        solution_id: Int,
         problem_id: Int,
         title: String,
         description: String,
-        category: String
-    ): Problem {
-        return Problem(
-            problem_id = problem_id,
-            title = title,
-            description = description,
-            category = category,
-            timestamp = LocalDateTime.now()
-        )
+        solvable: Boolean
+    ){
+        val updatedSolution = getUpdatedSolutionEntry(solution_id, problem_id, title, description, solvable)
+        updateSolution(updatedSolution)
+    }
+
+    private fun updateSolution(solution: Solution){
+        viewModelScope.launch {
+            problemDao.updateSolution(solution)
+        }
     }
 
     /*
@@ -53,6 +59,11 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
         insertProblem(newProblem)
     }
 
+    fun addNewSolution(problem_id: Int, title: String, description: String, solvable: Boolean){
+        val newSolution = getNewSolutionEntry(problem_id, title, description, solvable)
+        insertSolution(newSolution)
+    }
+
     private fun getNewProblemEntry(problem_id: Int, title: String, description: String, category: String?): Problem {
         return Problem(
             problem_id = problem_id,
@@ -61,6 +72,25 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
             category = category,
             timestamp = LocalDateTime.now()
         )
+    }
+
+    private fun getNewSolutionEntry(problem_id: Int, title: String, description: String, solvable: Boolean): Solution{
+        return Solution(
+            problem_id = problem_id,
+            title = title,
+            description = description,
+            solvable = solvable
+        )
+    }
+
+    private fun getUpdatedSolutionEntry(
+        solution_id: Int,
+        problem_id: Int,
+        title: String,
+        description: String,
+        solvable: Boolean
+    ): Solution{
+        return Solution(solution_id, problem_id, title, description, solvable)
     }
 
     /*
@@ -74,6 +104,14 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
         return problemDao.getProblem(problem_id).asLiveData()
     }
 
+    fun retrieveSolution(solution_id: Int): LiveData<Solution>{
+        return problemDao.getSolution(solution_id).asLiveData()
+    }
+
+    fun retrieveProblemWithSolutions(problem_id: Int): LiveData<ProblemWIthSolutions>{
+        return problemDao.getProblemWithSolutions(problem_id).asLiveData()
+    }
+
 
     private fun insertProblem(problem: Problem){
         viewModelScope.launch {
@@ -81,9 +119,21 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
         }
     }
 
+    private fun insertSolution(solution: Solution){
+        viewModelScope.launch {
+            problemDao.insertSolution(solution)
+        }
+    }
+
     fun deleteProblem(problem: Problem){
         viewModelScope.launch {
             problemDao.delete(problem)
+        }
+    }
+
+    fun deleteSolution(solution: Solution){
+        viewModelScope.launch {
+            problemDao.delete(solution)
         }
     }
 }
