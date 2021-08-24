@@ -78,7 +78,6 @@ class AddProblemFragment: Fragment() {
                 description = description
             )
 
-            Log.d("AddProblemFrag new", "problem_id: ${problem.problem_id}")
             val action = AddProblemFragmentDirections.actionAddProblemFragmentToAddProblemCatFragment(
                 problemId = problem.problem_id,
                 title = title,
@@ -92,10 +91,7 @@ class AddProblemFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val id = navigationArgs.problemId
-
-        Log.d("AddProblemFrag", "navargs.problemId: $id")
 
         if (id > 0){
             viewModel.retrieveProblem(id).observe(this.viewLifecycleOwner){ selectedProblem ->

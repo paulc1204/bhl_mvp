@@ -49,7 +49,6 @@ class AskSolutionFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val id = navigationArgs.problemId
-        Log.d("AskSolutionFrag", "problem_id: $id")
         binding.btnYes.setOnClickListener { onSolvable(id) }
         binding.btnNo.setOnClickListener { onNotSolvable() }
 

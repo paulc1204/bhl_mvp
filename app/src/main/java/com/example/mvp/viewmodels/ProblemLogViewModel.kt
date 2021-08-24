@@ -28,8 +28,11 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
         }
     }
 
-    fun getLatestProblemId(): Int =
-        runBlocking {
+    /*
+    * Return id of last added problem entry
+    * passed to [SolutionsFragment] to query corresponding solutions
+    * */
+    fun getLatestProblemId(): Int = runBlocking{
             problemDao.getLatestProblemId()
         }
 
@@ -58,7 +61,7 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
     }
 
     /*
-    * Get Problem instance in AddProblemFragment
+    * Get Problem instance in [AddProblemFragment]
     * */
     fun getPartialProblem(title: String, description: String): Problem {
         return Problem(title = title, description = description)
@@ -66,7 +69,6 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
 
     fun addNewProblem(problem_id: Int, title: String, description: String, category: String?){
         val newProblem = getNewProblemEntry(problem_id, title, description, category)
-        Log.d("viewModel", "newProblemId: ${newProblem.problem_id}")
         insertProblem(newProblem)
     }
 

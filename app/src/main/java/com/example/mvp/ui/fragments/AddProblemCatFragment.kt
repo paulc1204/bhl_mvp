@@ -101,8 +101,6 @@ class AddProblemCatFragment: Fragment() {
         val id = navigationArgs.problemId
         val category: String? = navigationArgs.category
 
-        Log.d("CatFrag", "problem_id: $id")
-
         if(!category.isNullOrEmpty()){
             viewModel.retrieveProblem(id).observe(this.viewLifecycleOwner){ selectedProblem ->
                 problem = selectedProblem

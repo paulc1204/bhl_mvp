@@ -46,12 +46,6 @@ class SolutionsFragment: Fragment() {
         }
 
         binding.solutionsRecyclerView.adapter = adapter
-//        viewModel.retrieveProblemWithSolutions(navigationArgs.problemId).observe(this.viewLifecycleOwner){ problemWIthSolutions ->
-//                problemWIthSolutions.solutions.let {
-//                    adapter.submitList(it)
-//                }
-//
-//        }
 
         viewModel.problemsWIthSolutions.observe(this.viewLifecycleOwner){ it ->
             it.find { it.problem.problem_id == navigationArgs.problemId }
