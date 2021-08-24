@@ -50,7 +50,7 @@ class AddProblemCatFragment: Fragment() {
             category
         )
 
-       val action = AddProblemCatFragmentDirections.actionAddProblemCatFragmentToAskSolutionFragment(navigationArgs.problemId)
+       val action = AddProblemCatFragmentDirections.actionAddProblemCatFragmentToAskSolutionFragment(viewModel.getLatestProblemId())
        findNavController().navigate(action)
     }
 
@@ -100,6 +100,8 @@ class AddProblemCatFragment: Fragment() {
 
         val id = navigationArgs.problemId
         val category: String? = navigationArgs.category
+
+        Log.d("CatFrag", "problem_id: $id")
 
         if(!category.isNullOrEmpty()){
             viewModel.retrieveProblem(id).observe(this.viewLifecycleOwner){ selectedProblem ->

@@ -44,7 +44,8 @@ class SolutionDetailFragment: Fragment() {
 
     private fun bind(solution: Solution){
         binding.apply{
-
+            solutionTitle.text = solution.title
+            solutionDescription.text = solution.description
         }
     }
 
@@ -81,7 +82,22 @@ class SolutionDetailFragment: Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return true
+        return when(item.itemId){
+            R.id.edit -> {
+                val action = SolutionDetailFragmentDirections.actionSolutionDetailFragmentToAddSolutionFragment(
+                    header = getString(R.string.edit_solution_title),
+                    problemId = navigationArgs.problemId,
+                    solutionId = solution.solution_id
+                )
+                findNavController().navigate(action)
+                true
+            }
+            R.id.delete -> {
+                confirmDelete()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
 }

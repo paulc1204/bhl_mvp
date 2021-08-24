@@ -1,6 +1,7 @@
 package com.example.mvp.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -48,6 +49,7 @@ class AskSolutionFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val id = navigationArgs.problemId
+        Log.d("AskSolutionFrag", "problem_id: $id")
         binding.btnYes.setOnClickListener { onSolvable(id) }
         binding.btnNo.setOnClickListener { onNotSolvable() }
 

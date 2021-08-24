@@ -83,7 +83,7 @@ class ProblemDetailFragment: Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
-            R.id.edit_problem -> {
+            R.id.edit -> {
                 val action = ProblemDetailFragmentDirections.actionProblemDetailFragmentToAddProblemFragment(
                     problemId = navigationArgs.problemId,
                     header = getString(R.string.edit_fragment_title)
@@ -91,7 +91,7 @@ class ProblemDetailFragment: Fragment() {
                 findNavController().navigate(action)
                 true
             }
-            R.id.delete_problem -> {
+            R.id.delete -> {
                 confirmDelete()
                 true
             }

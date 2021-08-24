@@ -10,12 +10,12 @@
 
         <menu>
             <item
-                android:id="@+id/edit_problem"
+                android:id="@+id/edit"
                 android:icon="@drawable/ic_baseline_edit_24"
                 android:title="@string/edit"
                 android:menuCategory="secondary" />
             <item
-                android:id="@+id/delete_problem"
+                android:id="@+id/delete"
                 android:icon="@drawable/ic_baseline_delete_24"
                 android:title="@string/delete"
                 android:menuCategory="secondary" />

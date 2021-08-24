@@ -80,6 +80,9 @@ class AddSolutionFragment: Fragment() {
             description = description,
             solvable = solvable
         )
+
+        val action = AddSolutionFragmentDirections.actionAddSolutionFragmentToSolutionsFragment(navigationArgs.problemId)
+        findNavController().navigate(action)
     }
 
     private fun bindOldSolution(solution: Solution){

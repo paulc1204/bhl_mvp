@@ -1,16 +1,20 @@
 package com.example.mvp.viewmodels
 
+import android.util.Log
+import android.util.Log.*
 import androidx.lifecycle.*
 import com.example.mvp.data.entities.Problem
 import com.example.mvp.data.ProblemDao
 import com.example.mvp.data.entities.Solution
 import com.example.mvp.data.relations.ProblemWIthSolutions
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import java.time.LocalDateTime
 
 class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
 
     val problems: LiveData<List<Problem>> = problemDao.getProblems().asLiveData()
+    val problemsWIthSolutions: LiveData<List<ProblemWIthSolutions>> = problemDao.getProblemsWithSolutions().asLiveData()
 
     fun updateCategory(title: String, description: String, category: String, problem_id: Int){
         viewModelScope.launch {
@@ -23,6 +27,12 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
             problemDao.update(solvable, problem_id)
         }
     }
+
+    fun getLatestProblemId(): Int =
+        runBlocking {
+            problemDao.getLatestProblemId()
+        }
+
 
     private fun updateProblem(problem: Problem){
         viewModelScope.launch {
@@ -56,6 +66,7 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
 
     fun addNewProblem(problem_id: Int, title: String, description: String, category: String?){
         val newProblem = getNewProblemEntry(problem_id, title, description, category)
+        Log.d("viewModel", "newProblemId: ${newProblem.problem_id}")
         insertProblem(newProblem)
     }
 

@@ -30,6 +30,9 @@ interface ProblemDao {
     @Query("SELECT * from problems WHERE problem_id = :problem_id")
     fun getProblem(problem_id: Int): Flow<Problem>
 
+    @Query("SELECT problem_id from problems ORDER BY problem_id DESC LIMIT 1")
+    suspend fun getLatestProblemId(): Int
+
     @Query("SELECT * from solutions WHERE solution_id = :solution_id")
     fun getSolution(solution_id: Int): Flow<Solution>
 

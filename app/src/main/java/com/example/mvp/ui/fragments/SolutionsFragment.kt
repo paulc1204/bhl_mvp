@@ -41,15 +41,24 @@ class SolutionsFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val adapter = SolutionListAdapter{
-            val action = SolutionsFragmentDirections.actionSolutionsFragmentToSolutionDetailFragment(it.solution_id)
+            val action = SolutionsFragmentDirections.actionSolutionsFragmentToSolutionDetailFragment(it.solution_id, navigationArgs.problemId)
             findNavController().navigate(action)
         }
 
         binding.solutionsRecyclerView.adapter = adapter
-        viewModel.retrieveProblemWithSolutions(navigationArgs.problemId).observe(this.viewLifecycleOwner){ problemWIthSolutions ->
-            problemWIthSolutions.solutions.let {
-                adapter.submitList(it)
-            }
+//        viewModel.retrieveProblemWithSolutions(navigationArgs.problemId).observe(this.viewLifecycleOwner){ problemWIthSolutions ->
+//                problemWIthSolutions.solutions.let {
+//                    adapter.submitList(it)
+//                }
+//
+//        }
+
+        viewModel.problemsWIthSolutions.observe(this.viewLifecycleOwner){ it ->
+            it.find { it.problem.problem_id == navigationArgs.problemId }
+                ?.solutions
+                ?.let {
+                    adapter.submitList(it)
+                }
         }
         binding.solutionsRecyclerView.layoutManager = LinearLayoutManager(this.context)
 
@@ -58,6 +67,11 @@ class SolutionsFragment: Fragment() {
                 header = getString(R.string.add_solution_title),
                 problemId = navigationArgs.problemId
             )
+            this.findNavController().navigate(action)
+        }
+
+        binding.toProblemListBtn.setOnClickListener {
+            val action = SolutionsFragmentDirections.actionSolutionsFragmentToProblemsFragment()
             this.findNavController().navigate(action)
         }
 

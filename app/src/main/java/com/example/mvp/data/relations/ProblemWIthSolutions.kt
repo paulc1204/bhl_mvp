@@ -11,5 +11,5 @@ data class ProblemWIthSolutions (
         parentColumn = "problem_id",
         entityColumn = "problem_id"
     )
-    val solutions: List<Solution>
+    val solutions: List<Solution>?
 )

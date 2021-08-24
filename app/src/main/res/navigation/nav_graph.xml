@@ -66,9 +66,7 @@
             app:argType="string" />
         <action
             android:id="@+id/action_addProblemCatFragment_to_askSolutionFragment"
-            app:destination="@id/askSolutionFragment"
-            app:popUpTo="@id/askSolutionFragment"
-            app:popUpToInclusive="true" />
+            app:destination="@id/askSolutionFragment" />
         <action
             android:id="@+id/action_addProblemCatFragment_to_solutionsFragment"
             app:destination="@id/solutionsFragment" />
@@ -88,7 +86,7 @@
     <fragment
         android:id="@+id/solutionsFragment"
         android:name="com.example.mvp.ui.fragments.SolutionsFragment"
-        android:label="SolutionsFragment" >
+        android:label="Solutions">
         <argument
             android:name="problem_id"
             app:argType="integer" />
@@ -107,13 +105,16 @@
     <fragment
         android:id="@+id/solutionDetailFragment"
         android:name="com.example.mvp.ui.fragments.SolutionDetailFragment"
-        android:label="SolutionDetailFragment" >
+        android:label="Solution">
         <argument
             android:name="solution_id"
             app:argType="integer" />
         <action
             android:id="@+id/action_solutionDetailFragment_to_addSolutionFragment"
             app:destination="@id/addSolutionFragment" />
+        <argument
+            android:name="problem_id"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/addSolutionFragment"
