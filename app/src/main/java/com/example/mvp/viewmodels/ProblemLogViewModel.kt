@@ -121,11 +121,6 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
         return problemDao.getSolution(solution_id).asLiveData()
     }
 
-    fun retrieveProblemWithSolutions(problem_id: Int): LiveData<ProblemWIthSolutions>{
-        return problemDao.getProblemWithSolutions(problem_id).asLiveData()
-    }
-
-
     private fun insertProblem(problem: Problem){
         viewModelScope.launch {
             problemDao.insert(problem)
@@ -147,6 +142,12 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
     fun deleteSolution(solution: Solution){
         viewModelScope.launch {
             problemDao.delete(solution)
+        }
+    }
+
+    fun deleteSolutions(problem_id: Int){
+        viewModelScope.launch {
+            problemDao.deleteSolutions(problem_id)
         }
     }
 }

@@ -51,6 +51,9 @@ interface ProblemDao {
     @Update
     suspend fun updateSolution(solution: Solution)
 
+    @Query("DELETE from solutions WHERE problem_id = :problem_id")
+    suspend fun deleteSolutions(problem_id: Int)
+
     @Delete
     suspend fun delete(problem: Problem)
 

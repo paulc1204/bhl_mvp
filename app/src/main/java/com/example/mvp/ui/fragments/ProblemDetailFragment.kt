@@ -56,13 +56,14 @@ class ProblemDetailFragment: Fragment() {
             .setCancelable(false)
             .setNegativeButton(getString(R.string.no)) { _, _ -> }
             .setPositiveButton(getString(R.string.yes)) { _, _ ->
-                deleteProblem()
+                deleteProblemAndSolutions()
             }
             .show()
     }
 
-    private fun deleteProblem(){
+    private fun deleteProblemAndSolutions(){
         viewModel.deleteProblem(problem)
+        viewModel.deleteSolutions(problem.problem_id)
         findNavController().navigateUp()
     }
 
