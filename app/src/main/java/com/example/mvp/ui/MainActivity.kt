@@ -2,6 +2,7 @@ package com.example.mvp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -23,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
         // Set up the action bar for use with the NavController
         NavigationUI.setupActionBarWithNavController(this, navController)
+
     }
 
     override fun onSupportNavigateUp(): Boolean {

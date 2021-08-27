@@ -21,5 +21,7 @@ data class Problem(
     @ColumnInfo(name = "solved")
     val solved: Boolean? = null,
     @ColumnInfo(name = "reflection")
-    val reflection: String? = null
+    val reflection: String? = null,
+    @ColumnInfo(name = "distraction_id")
+    val distraction_id: Int? = null
 )

@@ -1,19 +1,22 @@
 package com.example.mvp.data
 
 import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
+import androidx.room.*
+import com.example.mvp.data.entities.Distraction
 import com.example.mvp.data.entities.Problem
 import com.example.mvp.data.entities.Solution
 
 @Database(
     entities = [
         Problem::class,
-        Solution::class
+        Solution::class,
+        Distraction::class
     ],
-    version = 1
+    version = 3,
+    autoMigrations = [
+        AutoMigration(from = 1, to = 2),
+        AutoMigration(from = 2, to = 3)
+    ]
 )
 @TypeConverters(Converters::class)
 abstract class ProblemRoomDatabase: RoomDatabase() {

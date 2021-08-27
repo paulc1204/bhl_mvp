@@ -136,4 +136,8 @@
             android:name="problem_id"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/solutionInstructionsFragment"
+        android:name="com.example.mvp.ui.fragments.SolutionInstructionsFragment"
+        android:label="Problem Solving Steps" />
 </navigation>

@@ -19,6 +19,13 @@ android {
 
         // Enabling multidex support.
         multiDexEnabled true
+
+        // For AutoMigration
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
     }
 
     buildTypes {
@@ -64,4 +71,7 @@ dependencies {
     implementation "androidx.room:room-ktx:$room_version"
 
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.0.10'
+
+    // Navigation drawer
+    implementation 'com.google.android.material:material:1.2.0-alpha04'
 }

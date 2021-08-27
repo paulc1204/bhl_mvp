@@ -17,5 +17,9 @@ data class Solution(
     @ColumnInfo(name = "description")
     val description: String,
     @ColumnInfo(name = "solvable")
-    val solvable: Boolean
+    val solvable: Boolean,
+    @ColumnInfo(name = "pros")
+    val pros: String? = null,
+    @ColumnInfo(name = "cons")
+    val cons: String? = null
 )

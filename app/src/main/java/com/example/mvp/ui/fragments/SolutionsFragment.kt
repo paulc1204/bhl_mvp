@@ -1,13 +1,12 @@
 package com.example.mvp.ui.fragments
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.navigation.ui.onNavDestinationSelected
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mvp.MyApplication
 import com.example.mvp.R
@@ -34,6 +33,7 @@ class SolutionsFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentSolutionsBinding.inflate(inflater, container, false)
+        setHasOptionsMenu(true)
         return binding.root
     }
 
@@ -47,6 +47,7 @@ class SolutionsFragment: Fragment() {
 
         binding.solutionsRecyclerView.adapter = adapter
 
+        //updating the solutions list
         viewModel.problemsWIthSolutions.observe(this.viewLifecycleOwner){ it ->
             it.find { it.problem.problem_id == navigationArgs.problemId }
                 ?.solutions
@@ -55,6 +56,10 @@ class SolutionsFragment: Fragment() {
                 }
         }
         binding.solutionsRecyclerView.layoutManager = LinearLayoutManager(this.context)
+
+        viewModel.retrieveProblem(navigationArgs.problemId).observe(this.viewLifecycleOwner){ selectedProblem ->
+            binding.problemTitle.text = selectedProblem.title
+        }
 
         binding.addSolutionButton.setOnClickListener {
             val action = SolutionsFragmentDirections.actionSolutionsFragmentToAddSolutionFragment(
@@ -70,4 +75,14 @@ class SolutionsFragment: Fragment() {
         }
 
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.options_instructions, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return item.onNavDestinationSelected(findNavController()) || super.onOptionsItemSelected(item)
+    }
+
 }
