@@ -87,7 +87,7 @@ class ProblemDetailFragment: Fragment() {
             R.id.edit -> {
                 val action = ProblemDetailFragmentDirections.actionProblemDetailFragmentToAddProblemFragment(
                     problemId = navigationArgs.problemId,
-                    header = getString(R.string.edit_fragment_title)
+                    header = getString(R.string.edit_fragment_title, "Problem")
                 )
                 findNavController().navigate(action)
                 true

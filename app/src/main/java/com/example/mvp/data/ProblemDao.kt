@@ -1,6 +1,7 @@
 package com.example.mvp.data
 
 import androidx.room.*
+import com.example.mvp.data.entities.Distraction
 import com.example.mvp.data.entities.Problem
 import com.example.mvp.data.entities.Solution
 import com.example.mvp.data.relations.ProblemWIthSolutions
@@ -15,6 +16,9 @@ interface ProblemDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertSolution(solution: Solution)
+
+    @Insert
+    suspend fun insertDistraction(distraction: Distraction)
 
     @Transaction
     @Query("SELECT * from problems WHERE problem_id = :problem_id")
@@ -36,6 +40,12 @@ interface ProblemDao {
     @Query("SELECT * from solutions WHERE solution_id = :solution_id")
     fun getSolution(solution_id: Int): Flow<Solution>
 
+    @Query("SELECT * from distractions WHERE distraction_id = :distraction_id")
+    fun getDistraction(distraction_id: Int): Flow<Distraction>
+
+    @Query("SELECT * from distractions")
+    fun getDistractions(): Flow<List<Distraction>>
+
     @Query("SELECT timestamp from problems WHERE problem_id = :problem_id")
     fun getTimestamp(problem_id: Int): LocalDateTime
 
@@ -45,11 +55,15 @@ interface ProblemDao {
     @Query("UPDATE problems SET solvable = :solvable WHERE problem_id = :problem_id")
     suspend fun update(solvable: Boolean, problem_id: Int)
 
+    @Query("UPDATE distractions SET title = :title WHERE distraction_id = :distraction_id")
+    suspend fun updateDistraction(title: String, distraction_id: Int)
+
     @Update
     suspend fun update(problem: Problem)
 
     @Update
     suspend fun updateSolution(solution: Solution)
+
 
     @Query("DELETE from solutions WHERE problem_id = :problem_id")
     suspend fun deleteSolutions(problem_id: Int)
@@ -59,4 +73,7 @@ interface ProblemDao {
 
     @Delete
     suspend fun delete(solution: Solution)
+
+    @Delete
+    suspend fun delete(distraction: Distraction)
 }

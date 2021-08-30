@@ -15,14 +15,15 @@
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:textStyle="bold"
-            tools:text="Title of the problem"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Title of the problem" />
 
         <TextView
             android:id="@+id/solution_title"
             style="@style/Header"
             android:layout_marginStart="@dimen/margin_between_elements"
+            android:layout_marginTop="@dimen/margin_start"
             android:layout_marginEnd="@dimen/margin_between_elements"
             android:text="@string/title"
             app:layout_constraintEnd_toStartOf="@+id/solution_tried"
@@ -33,6 +34,7 @@
         <TextView
             android:id="@+id/solution_tried"
             style="@style/Header"
+            android:layout_marginTop="@dimen/margin_start"
             android:text="@string/tried"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
@@ -62,12 +64,12 @@
 
         <Button
             android:id="@+id/toProblemListBtn"
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:text="@string/to_problem_list"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_between_elements"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/addSolutionButton"/>
+            android:text="@string/to_problem_list"
+            app:layout_constraintBottom_toTopOf="@+id/addSolutionButton"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/addSolutionButton"

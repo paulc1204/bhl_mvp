@@ -42,15 +42,15 @@ class AskSolutionFragment: Fragment() {
         findNavController().navigate(action)
     }
 
-    private fun onNotSolvable(){
-        //navigate to distractions
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val id = navigationArgs.problemId
         binding.btnYes.setOnClickListener { onSolvable(id) }
-        binding.btnNo.setOnClickListener { onNotSolvable() }
+
+        binding.btnNo.setOnClickListener {
+            val action = AskSolutionFragmentDirections.actionAskSolutionFragmentToDistractionOptionsFragment()
+            findNavController().navigate(action)
+        }
 
     }
 

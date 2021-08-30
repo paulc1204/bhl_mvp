@@ -25,10 +25,8 @@
     <string name="category_friendship">Friendship</string>
     <string name="category_other">Other</string>
 
-    <string name="add_fragment_title">Add Problem</string>
-    <string name="edit_fragment_title">Edit Problem</string>
-    <string name="add_solution_title">Add Solution</string>
-    <string name="edit_solution_title">Edit Solution</string>
+    <string name="add_fragment_title">Add %1$s</string>
+    <string name="edit_fragment_title">Edit %1$s</string>
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
     <string name="yes">Yes</string>
@@ -37,6 +35,8 @@
     <string name="ask_solvability">Can you do something about this problem?</string>
     <string name="can_you_do_it">Can you do it?</string>
     <string name="to_problem_list">Go to Problem List</string>
+    <string name="how_to_distract">How do i distract myself?</string>
+    <string name="activities_list">Activities List</string>
 
     <string name="lorem_ipsum">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </string>
 

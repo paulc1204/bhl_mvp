@@ -55,7 +55,7 @@ class ProblemsFragment: Fragment() {
 
         binding.addProblemButton.setOnClickListener {
             val action = ProblemsFragmentDirections.actionProblemsFragmentToAddProblemFragment(
-                header = getString(R.string.add_fragment_title)
+                header = getString(R.string.add_fragment_title, "Problem")
             )
             this.findNavController().navigate(action)
         }

@@ -85,7 +85,7 @@ class SolutionDetailFragment: Fragment() {
         return when(item.itemId){
             R.id.edit -> {
                 val action = SolutionDetailFragmentDirections.actionSolutionDetailFragmentToAddSolutionFragment(
-                    header = getString(R.string.edit_solution_title),
+                    header = getString(R.string.edit_fragment_title, "Solution"),
                     problemId = navigationArgs.problemId,
                     solutionId = solution.solution_id
                 )

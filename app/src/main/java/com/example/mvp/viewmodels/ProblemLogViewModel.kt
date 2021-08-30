@@ -5,6 +5,7 @@ import android.util.Log.*
 import androidx.lifecycle.*
 import com.example.mvp.data.entities.Problem
 import com.example.mvp.data.ProblemDao
+import com.example.mvp.data.entities.Distraction
 import com.example.mvp.data.entities.Solution
 import com.example.mvp.data.relations.ProblemWIthSolutions
 import kotlinx.coroutines.launch
@@ -15,6 +16,7 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
 
     val problems: LiveData<List<Problem>> = problemDao.getProblems().asLiveData()
     val problemsWIthSolutions: LiveData<List<ProblemWIthSolutions>> = problemDao.getProblemsWithSolutions().asLiveData()
+    val distractions: LiveData<List<Distraction>> = problemDao.getDistractions().asLiveData()
 
     fun updateCategory(title: String, description: String, category: String, problem_id: Int){
         viewModelScope.launch {
@@ -37,11 +39,11 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
         }
 
 
-    private fun updateProblem(problem: Problem){
-        viewModelScope.launch {
-            problemDao.update(problem)
-        }
-    }
+//    private fun updateProblem(problem: Problem){
+//        viewModelScope.launch {
+//            problemDao.update(problem)
+//        }
+//    }
 
     fun updateSolution(
         solution_id: Int,
@@ -57,6 +59,12 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
     private fun updateSolution(solution: Solution){
         viewModelScope.launch {
             problemDao.updateSolution(solution)
+        }
+    }
+
+    fun updateDistraction(distraction_id: Int, title: String){
+        viewModelScope.launch {
+            problemDao.updateDistraction(title, distraction_id)
         }
     }
 
@@ -77,6 +85,11 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
         insertSolution(newSolution)
     }
 
+    fun addNewDistraction(title: String){
+        val newDistraction = getNewDistractionEntry(title)
+        insertDistraction(newDistraction)
+    }
+
     private fun getNewProblemEntry(problem_id: Int, title: String, description: String, category: String?): Problem {
         return Problem(
             problem_id = problem_id,
@@ -95,6 +108,8 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
             solvable = solvable
         )
     }
+
+    private fun getNewDistractionEntry(title: String): Distraction = Distraction(title = title)
 
     private fun getUpdatedSolutionEntry(
         solution_id: Int,
@@ -121,6 +136,10 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
         return problemDao.getSolution(solution_id).asLiveData()
     }
 
+    fun retrieveDistraction(distraction_id: Int): LiveData<Distraction>{
+        return problemDao.getDistraction(distraction_id).asLiveData()
+    }
+
     private fun insertProblem(problem: Problem){
         viewModelScope.launch {
             problemDao.insert(problem)
@@ -130,6 +149,12 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
     private fun insertSolution(solution: Solution){
         viewModelScope.launch {
             problemDao.insertSolution(solution)
+        }
+    }
+
+    private fun insertDistraction(distraction: Distraction){
+        viewModelScope.launch {
+            problemDao.insertDistraction(distraction)
         }
     }
 
@@ -148,6 +173,12 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
     fun deleteSolutions(problem_id: Int){
         viewModelScope.launch {
             problemDao.deleteSolutions(problem_id)
+        }
+    }
+
+    fun deleteDistraction(distraction: Distraction){
+        viewModelScope.launch {
+            problemDao.delete(distraction)
         }
     }
 }

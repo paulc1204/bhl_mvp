@@ -63,7 +63,7 @@ class SolutionsFragment: Fragment() {
 
         binding.addSolutionButton.setOnClickListener {
             val action = SolutionsFragmentDirections.actionSolutionsFragmentToAddSolutionFragment(
-                header = getString(R.string.add_solution_title),
+                header = getString(R.string.add_fragment_title, "Solution"),
                 problemId = navigationArgs.problemId
             )
             this.findNavController().navigate(action)

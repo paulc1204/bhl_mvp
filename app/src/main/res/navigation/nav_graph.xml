@@ -82,6 +82,9 @@
         <action
             android:id="@+id/action_askSolutionFragment_to_solutionsFragment"
             app:destination="@id/solutionsFragment" />
+        <action
+            android:id="@+id/action_askSolutionFragment_to_distractionOptionsFragment"
+            app:destination="@id/distractionOptionsFragment" />
     </fragment>
     <fragment
         android:id="@+id/solutionsFragment"
@@ -140,4 +143,50 @@
         android:id="@+id/solutionInstructionsFragment"
         android:name="com.example.mvp.ui.fragments.SolutionInstructionsFragment"
         android:label="Problem Solving Steps" />
+    <fragment
+        android:id="@+id/distractionOptionsFragment"
+        android:name="com.example.mvp.ui.fragments.DistractionOptionsFragment">
+        <action
+            android:id="@+id/action_distractionOptionsFragment_to_distractionActivitiesFragment"
+            app:destination="@id/distractionActivitiesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/distractionActivitiesFragment"
+        android:name="com.example.mvp.ui.fragments.DistractionActivitiesFragment"
+        android:label="Distraction Activities">
+        <action
+            android:id="@+id/action_distractionActivitiesFragment_to_distractionDetailFragment"
+            app:destination="@id/distractionDetailFragment" />
+        <action
+            android:id="@+id/action_distractionActivitiesFragment_to_addDistractionFragment"
+            app:destination="@id/addDistractionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/distractionDetailFragment"
+        android:name="com.example.mvp.ui.fragments.DistractionDetailFragment"
+        android:label="Distraction Details" >
+        <argument
+            android:name="distraction_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_distractionDetailFragment_to_addDistractionFragment"
+            app:destination="@id/addDistractionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addDistractionFragment"
+        android:name="com.example.mvp.ui.fragments.AddDistractionFragment"
+        android:label="{header}">
+        <action
+            android:id="@+id/action_addDistractionFragment_to_distractionActivitiesFragment"
+            app:destination="@id/distractionActivitiesFragment"
+            app:popUpTo="@id/distractionActivitiesFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="header"
+            app:argType="string" />
+        <argument
+            android:name="distraction_id"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
 </navigation>
