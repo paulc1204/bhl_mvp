@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/problemsFragment"
         android:name="com.example.mvp.ui.fragments.ProblemsFragment"
-        android:label="Problems"
+        android:label="@string/problem"
         tools:layout="@layout/fragment_problems">
         <action
             android:id="@+id/action_problemsFragment_to_problemDetailFragment"
@@ -145,7 +145,8 @@
         android:label="Problem Solving Steps" />
     <fragment
         android:id="@+id/distractionOptionsFragment"
-        android:name="com.example.mvp.ui.fragments.DistractionOptionsFragment">
+        android:name="com.example.mvp.ui.fragments.DistractionOptionsFragment"
+        android:label="@string/distractions">
         <action
             android:id="@+id/action_distractionOptionsFragment_to_distractionActivitiesFragment"
             app:destination="@id/distractionActivitiesFragment" />

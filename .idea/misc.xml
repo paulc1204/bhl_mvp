@@ -7,7 +7,11 @@
         <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/drawable/ic_baseline_delete.xml" value="0.3984375" />
         <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.3984375" />
         <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.19114583333333332" />
+        <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/drawable/ic_baseline_fmd_bad_24.xml" value="0.3984375" />
         <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/drawable/ic_baseline_help_24.xml" value="0.3984375" />
+        <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/drawable/ic_baseline_more_vert_24.xml" value="0.3984375" />
+        <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/drawable/ic_baseline_save_24.xml" value="0.3984375" />
+        <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/drawable/ic_sun_24.xml" value="0.3984375" />
         <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/layout/activity_main.xml" value="0.3473731884057971" />
         <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/layout/distraction_list_item.xml" value="0.33016304347826086" />
         <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/layout/fragment_add_distraction.xml" value="0.33016304347826086" />
@@ -26,6 +30,7 @@
         <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/layout/nav_header.xml" value="0.338768115942029" />
         <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/layout/problem_list_item.xml" value="0.2807971014492754" />
         <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/layout/solution_list_item.xml" value="0.3473731884057971" />
+        <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/layout/toolbar.xml" value="0.32382246376811596" />
         <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/menu/nav_drawer_menu.xml" value="0.38229166666666664" />
         <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/menu/options_instructions.xml" value="0.38229166666666664" />
         <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/menu/options_menu.xml" value="0.38229166666666664" />
