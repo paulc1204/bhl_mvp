@@ -69,13 +69,12 @@ class AddSolutionFragment: Fragment() {
 
     private fun updateSolution(){
         val btnId = binding.yesOrNo.checkedRadioButtonId
+        val solvable = binding.yesOrNo.findViewById<RadioButton>(btnId).text.toString() == "Yes"
         val title = binding.solutionTitle.text.toString()
         val description = binding.solutionDescription.text.toString()
-        val solvable = binding.yesOrNo.findViewById<RadioButton>(btnId).text.toString() == "Yes"
 
         viewModel.updateSolution(
             solution_id = navigationArgs.solutionId,
-            problem_id = navigationArgs.problemId,
             title = title,
             description = description,
             solvable = solvable

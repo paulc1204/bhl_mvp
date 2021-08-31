@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_problemDetailFragment_to_addProblemFragment"
             app:destination="@id/addProblemFragment" />
+        <action
+            android:id="@+id/action_problemDetailFragment_to_solutionsFragment"
+            app:destination="@id/solutionsFragment" />
     </fragment>
     <fragment
         android:id="@+id/addProblemFragment"
@@ -118,6 +121,9 @@
         <argument
             android:name="problem_id"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_solutionDetailFragment_to_evalSolutionFragment"
+            app:destination="@id/evalSolutionFragment" />
     </fragment>
     <fragment
         android:id="@+id/addSolutionFragment"
@@ -189,5 +195,18 @@
             android:name="distraction_id"
             app:argType="integer"
             android:defaultValue="-1" />
+    </fragment>
+    <fragment
+        android:id="@+id/evalSolutionFragment"
+        android:name="com.example.mvp.ui.fragments.EvalSolutionFragment"
+        android:label="EvalSolutionFragment" >
+        <argument
+            android:name="solution_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_evalSolutionFragment_to_solutionsFragment"
+            app:destination="@id/solutionsFragment"
+            app:popUpTo="@id/solutionsFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 </navigation>

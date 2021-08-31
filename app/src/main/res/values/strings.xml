@@ -37,6 +37,8 @@
     <string name="ask_solvability">Can you do something about this problem?</string>
     <string name="can_you_do_it">Can you do it?</string>
     <string name="to_problem_list">Go to Problem List</string>
+    <string name="to_solutions">Go to Solutions</string>
+    <string name="evaluate_solution">Evaluate Solution</string>
     <string name="how_to_distract">How do i distract myself?</string>
     <string name="activities_list">Activities List</string>
 
@@ -49,4 +51,6 @@
 
     <string name="problem_title_req">Title <font color='#FF0000'>*</font></string>
     <string name="problem_description_req">Description <font color='#FF0000'>*</font></string>
+    <string name="pros_req">Pros <font color='#FF0000'>*</font></string>
+    <string name="cons_req">Cons <font color='#FF0000'>*</font></string>
 </resources>

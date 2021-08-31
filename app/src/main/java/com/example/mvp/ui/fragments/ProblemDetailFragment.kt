@@ -75,6 +75,10 @@ class ProblemDetailFragment: Fragment() {
             bind(problem)
         }
 
+        binding.toSolutions.setOnClickListener {
+            val action = ProblemDetailFragmentDirections.actionProblemDetailFragmentToSolutionsFragment(problem.problem_id)
+            findNavController().navigate(action)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

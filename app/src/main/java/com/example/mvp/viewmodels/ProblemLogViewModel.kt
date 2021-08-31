@@ -30,6 +30,12 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
         }
     }
 
+    fun updateSolutionEval(solution_id: Int, pros: String, cons: String){
+        viewModelScope.launch {
+            problemDao.updateSolutionEval(pros, cons, solution_id)
+        }
+    }
+
     /*
     * Return id of last added problem entry
     * passed to [SolutionsFragment] to query corresponding solutions
@@ -38,27 +44,14 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
             problemDao.getLatestProblemId()
         }
 
-
-//    private fun updateProblem(problem: Problem){
-//        viewModelScope.launch {
-//            problemDao.update(problem)
-//        }
-//    }
-
     fun updateSolution(
         solution_id: Int,
-        problem_id: Int,
         title: String,
         description: String,
         solvable: Boolean
     ){
-        val updatedSolution = getUpdatedSolutionEntry(solution_id, problem_id, title, description, solvable)
-        updateSolution(updatedSolution)
-    }
-
-    private fun updateSolution(solution: Solution){
         viewModelScope.launch {
-            problemDao.updateSolution(solution)
+            problemDao.updateSolution(solution_id, title, description, solvable)
         }
     }
 
@@ -110,16 +103,6 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
     }
 
     private fun getNewDistractionEntry(title: String): Distraction = Distraction(title = title)
-
-    private fun getUpdatedSolutionEntry(
-        solution_id: Int,
-        problem_id: Int,
-        title: String,
-        description: String,
-        solvable: Boolean
-    ): Solution{
-        return Solution(solution_id, problem_id, title, description, solvable)
-    }
 
     /*
     * Checks that the fields are not empty

@@ -42,10 +42,21 @@ class SolutionDetailFragment: Fragment() {
         return binding.root
     }
 
-    private fun bind(solution: Solution){
+    private fun bind(){
         binding.apply{
             solutionTitle.text = solution.title
             solutionDescription.text = solution.description
+
+            if(!solution.pros.isNullOrBlank() || !solution.cons.isNullOrBlank()){
+                evalGroup.visibility = View.VISIBLE
+                prosContent.text = solution.pros
+                consContent.text = solution.cons
+            }
+
+            btnEval.setOnClickListener {
+                val action = SolutionDetailFragmentDirections.actionSolutionDetailFragmentToEvalSolutionFragment(solution.solution_id)
+                findNavController().navigate(action)
+            }
         }
     }
 
@@ -71,9 +82,8 @@ class SolutionDetailFragment: Fragment() {
 
         viewModel.retrieveSolution(navigationArgs.solutionId).observe(this.viewLifecycleOwner) { selectedSolution ->
             solution = selectedSolution
-            bind(solution)
+            bind()
         }
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

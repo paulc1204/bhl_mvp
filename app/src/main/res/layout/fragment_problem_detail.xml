@@ -3,13 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-        <variable
-            name="problem"
-            type="com.example.mvp.data.entities.Problem" />
-        <import type="android.view.View"/>
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -59,14 +52,13 @@
             app:layout_constraintTop_toBottomOf="@+id/problem_category"
             tools:text="@string/lorem_ipsum" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+        <Button
+            android:id="@+id/toSolutions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_between_elements"
-            android:visibility="@{problem.solvable ? View.VISIBLE : View.GONE}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/problem_description" />
+            android:text="@string/to_solutions"
+            app:layout_constraintTop_toBottomOf="@+id/problem_description"
+            android:layout_marginTop="@dimen/margin_start" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
