@@ -73,6 +73,18 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
         insertProblem(newProblem)
     }
 
+    fun resolveProblem(problem_id: Int){
+        viewModelScope.launch {
+            problemDao.resolveProblem(problem_id)
+        }
+    }
+
+    fun addReflection(reflection: String, problem_id: Int){
+        viewModelScope.launch {
+            problemDao.addReflection(reflection, problem_id)
+        }
+    }
+
     fun addNewSolution(problem_id: Int, title: String, description: String, solvable: Boolean){
         val newSolution = getNewSolutionEntry(problem_id, title, description, solvable)
         insertSolution(newSolution)
@@ -156,6 +168,12 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
     fun deleteSolutions(problem_id: Int){
         viewModelScope.launch {
             problemDao.deleteSolutions(problem_id)
+        }
+    }
+
+    fun deleteOtherSolutions(solution_id: Int, problem_id: Int){
+        viewModelScope.launch {
+            problemDao.deleteOtherSolutions(solution_id, problem_id)
         }
     }
 

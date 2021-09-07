@@ -30,6 +30,11 @@
         <action
             android:id="@+id/action_problemDetailFragment_to_solutionsFragment"
             app:destination="@id/solutionsFragment" />
+        <action
+            android:id="@+id/action_problemDetailFragment_to_solvedProblemsFragment"
+            app:destination="@id/solvedProblemsFragment"
+            app:popUpTo="@id/solvedProblemsFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/addProblemFragment"
@@ -124,6 +129,9 @@
         <action
             android:id="@+id/action_solutionDetailFragment_to_evalSolutionFragment"
             app:destination="@id/evalSolutionFragment" />
+        <action
+            android:id="@+id/action_solutionDetailFragment_to_reflectionFragment"
+            app:destination="@id/reflectionFragment" />
     </fragment>
     <fragment
         android:id="@+id/addSolutionFragment"
@@ -208,5 +216,36 @@
             app:destination="@id/solutionsFragment"
             app:popUpTo="@id/solutionsFragment"
             app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/solvedProblemsFragment"
+        android:name="com.example.mvp.ui.fragments.SolvedProblemsFragment"
+        android:label="Resolved Problems" >
+        <action
+            android:id="@+id/action_solvedProblemsFragment_to_solvedProblemDetailFragment"
+            app:destination="@id/solvedProblemDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/reflectionFragment"
+        android:name="com.example.mvp.ui.fragments.ReflectionFragment"
+        android:label="ReflectionFragment" >
+        <argument
+            android:name="solution_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_reflectionFragment_to_problemsFragment"
+            app:destination="@id/problemsFragment"
+            app:popUpTo="@id/problemsFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/solvedProblemDetailFragment"
+        android:name="com.example.mvp.ui.fragments.SolvedProblemDetailFragment">
+        <argument
+            android:name="problem_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_solvedProblemDetailFragment_to_addProblemFragment"
+            app:destination="@id/addProblemFragment" />
     </fragment>
 </navigation>

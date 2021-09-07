@@ -40,7 +40,7 @@ class ProblemDetailFragment: Fragment() {
         return binding.root
     }
 
-    private fun bind(problem: Problem){
+    private fun bind(){
         binding.apply{
             problemTitle.text = problem.title
             problemDate.text = problem.timestamp?.format(DateTimeFormatter.ofPattern("yyyy-MM-dd h:m a"))
@@ -67,17 +67,28 @@ class ProblemDetailFragment: Fragment() {
         findNavController().navigateUp()
     }
 
+    private fun resolveProblem(){
+        viewModel.resolveProblem(problem.problem_id)
+
+        val action = ProblemDetailFragmentDirections.actionProblemDetailFragmentToSolvedProblemsFragment()
+        findNavController().navigate(action)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.retrieveProblem(navigationArgs.problemId).observe(this.viewLifecycleOwner) { selectedProblem ->
             problem = selectedProblem
-            bind(problem)
+            bind()
         }
 
         binding.toSolutions.setOnClickListener {
             val action = ProblemDetailFragmentDirections.actionProblemDetailFragmentToSolutionsFragment(problem.problem_id)
             findNavController().navigate(action)
+        }
+
+        binding.resolveProblem.setOnClickListener {
+//            resolveProblem()
         }
     }
 

@@ -56,9 +56,19 @@
             android:id="@+id/toSolutions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_start"
             android:text="@string/to_solutions"
-            app:layout_constraintTop_toBottomOf="@+id/problem_description"
-            android:layout_marginTop="@dimen/margin_start" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/problem_description" />
+
+        <Button
+            android:id="@+id/resolveProblem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_start"
+            android:text="@string/resolve_problem"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toSolutions" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

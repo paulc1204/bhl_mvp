@@ -37,6 +37,12 @@ interface ProblemDao {
     @Query("SELECT problem_id from problems ORDER BY problem_id DESC LIMIT 1")
     suspend fun getLatestProblemId(): Int
 
+    @Query("UPDATE problems SET solved = 1 WHERE problem_id = :problem_id")
+    suspend fun resolveProblem(problem_id: Int)
+
+    @Query("UPDATE problems SET reflection = :reflection WHERE problem_id = :problem_id")
+    suspend fun addReflection(reflection: String, problem_id: Int)
+
     @Query("SELECT * from solutions WHERE solution_id = :solution_id")
     fun getSolution(solution_id: Int): Flow<Solution>
 
@@ -72,6 +78,9 @@ interface ProblemDao {
 
     @Query("DELETE from solutions WHERE problem_id = :problem_id")
     suspend fun deleteSolutions(problem_id: Int)
+
+    @Query("DELETE from solutions WHERE solution_id != :solution_id AND problem_id = :problem_id")
+    suspend fun deleteOtherSolutions(solution_id: Int, problem_id: Int)
 
     @Delete
     suspend fun delete(problem: Problem)

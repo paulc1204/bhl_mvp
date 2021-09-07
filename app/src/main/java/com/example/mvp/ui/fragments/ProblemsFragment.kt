@@ -34,7 +34,6 @@ class ProblemsFragment: Fragment() {
     ): View? {
         _binding = FragmentProblemsBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,7 +46,10 @@ class ProblemsFragment: Fragment() {
 
         binding.recyclerView.adapter = adapter
         viewModel.problems.observe(this.viewLifecycleOwner){ problems ->
-            problems.let {
+            problems.filter {
+              it.solved != true
+            }.
+            let {
                 adapter.submitList(it)
             }
         }

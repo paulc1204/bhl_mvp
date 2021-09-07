@@ -6,6 +6,8 @@
     <string name="close">Close</string>
     <string name="help">Help</string>
     <string name="problem">Problems</string>
+    <string name="solution">Solution</string>
+    <string name="reflection">Reflection</string>
     <string name="distractions">Distractions</string>
     <string name="self_soothe">Self-soothe</string>
     <string name="title">Title</string>
@@ -33,6 +35,11 @@
     <string name="delete">Delete</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+
+    <string name="final_solution">Mark as Final Solution</string>
+    <string name="final_solution_confirmation">This solution will be marked as final and all other candidate solutions will be deleted.</string>
+    <string name="resolve_problem">Resolve Problem</string>
+    <string name="resolved_problems">Resolved Problems</string>
     <string name="delete_confirmation">Are you sure you want to delete?</string>
     <string name="ask_solvability">Can you do something about this problem?</string>
     <string name="can_you_do_it">Can you do it?</string>
@@ -51,6 +58,7 @@
 
     <string name="problem_title_req">Title <font color='#FF0000'>*</font></string>
     <string name="problem_description_req">Description <font color='#FF0000'>*</font></string>
+    <string name="reflection_req">Reflect on the experience <font color='#FF0000'>*</font></string>
     <string name="pros_req">Pros <font color='#FF0000'>*</font></string>
     <string name="cons_req">Cons <font color='#FF0000'>*</font></string>
 </resources>

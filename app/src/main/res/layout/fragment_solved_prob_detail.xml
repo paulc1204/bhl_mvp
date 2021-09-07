@@ -12,95 +12,107 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin"
-            tools:context=".ui.fragments.SolutionDetailFragment">
+            tools:context=".ui.fragments.SolvedProblemDetailFragment" >
 
             <TextView
-                android:id="@+id/solution_title"
+                android:id="@+id/problem_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_between_elements"
-                android:textSize="19sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Title" />
 
             <TextView
+                android:id="@+id/problem_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_between_elements"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/problem_title"
+                tools:text="2021-08-11 12:00" />
+
+            <TextView
+                android:id="@+id/problem_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_between_elements"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/problem_date"
+                tools:text="Work" />
+
+            <TextView
+                android:id="@+id/problem_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_between_elements"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/problem_category"
+                tools:text="@string/lorem_ipsum" />
+
+            <TextView
+                android:id="@+id/solution_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:text="@string/solution"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/problem_description" />
+
+            <TextView
+                android:id="@+id/solution_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_between_elements"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/solution_label"
+                tools:text="Solution title" />
+
+            <TextView
                 android:id="@+id/solution_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_between_elements"
-                android:textSize="17sp"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/solution_title"
-                tools:text="@string/lorem_ipsum" />
-
-            <androidx.constraintlayout.widget.Group
-                android:id="@+id/eval_group"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="invisible"
-                app:constraint_referenced_ids="pros_title,pros_content,cons_title,cons_content" />
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="Solution description"
+                android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/pros_title"
+                android:id="@+id/reflection_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_start"
-                android:text="Pros"
-                android:textSize="18sp"
+                android:text="@string/reflection"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/solution_description" />
 
             <TextView
-                android:id="@+id/pros_content"
+                android:id="@+id/reflection_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_between_elements"
-                android:textSize="16sp"
+                android:layout_marginBottom="@dimen/margin_start"
+                app:layout_constraintTop_toBottomOf="@+id/reflection_label"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pros_title" />
+                tools:text="Reflection content"
+                android:textSize="16sp"/>
 
-            <TextView
-                android:id="@+id/cons_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_between_elements"
-                android:text="Cons"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pros_content" />
-
-            <TextView
-                android:id="@+id/cons_content"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_between_elements"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cons_title" />
-
-            <Button
-                android:id="@+id/btnEval"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_start"
-                android:text="@string/evaluate_solution"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cons_content" />
-
-            <Button
-                android:id="@+id/markAsFinal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_start"
-                android:text="@string/final_solution"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnEval" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
+
+
 </layout>

@@ -14,5 +14,10 @@
             android:icon="@drawable/ic_sun_24"
             />
 
+        <item
+            android:id="@+id/solvedProblemsFragment"
+            android:title="@string/resolved_problems"
+            android:icon="@drawable/ic_book_24"/>
+
     </group>
 </menu>

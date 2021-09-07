@@ -9,8 +9,10 @@
         <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.19114583333333332" />
         <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/drawable/ic_baseline_fmd_bad_24.xml" value="0.3984375" />
         <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/drawable/ic_baseline_help_24.xml" value="0.3984375" />
+        <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/drawable/ic_baseline_menu_book_24.xml" value="0.3984375" />
         <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/drawable/ic_baseline_more_vert_24.xml" value="0.3984375" />
         <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/drawable/ic_baseline_save_24.xml" value="0.3984375" />
+        <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.3984375" />
         <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/drawable/ic_sun_24.xml" value="0.3984375" />
         <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/layout/activity_main.xml" value="0.3473731884057971" />
         <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/layout/distraction_list_item.xml" value="0.33016304347826086" />
@@ -25,9 +27,12 @@
         <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/layout/fragment_eval_solution.xml" value="0.32382246376811596" />
         <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/layout/fragment_problem_detail.xml" value="0.33469202898550726" />
         <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/layout/fragment_problems.xml" value="0.2807971014492754" />
+        <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/layout/fragment_reflection.xml" value="0.32382246376811596" />
         <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/layout/fragment_solution_detail.xml" value="0.3473731884057971" />
         <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/layout/fragment_solution_instructions.xml" value="0.338768115942029" />
         <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/layout/fragment_solutions.xml" value="0.3179347826086957" />
+        <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/layout/fragment_solved_prob_detail.xml" value="0.32019927536231885" />
+        <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/layout/fragment_solved_problems.xml" value="0.32382246376811596" />
         <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/layout/nav_header.xml" value="0.338768115942029" />
         <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/layout/problem_list_item.xml" value="0.2807971014492754" />
         <entry key="..\:/Users/Paul/AndroidStudioProjects/MVP/app/src/main/res/layout/solution_list_item.xml" value="0.3473731884057971" />

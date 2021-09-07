@@ -19,7 +19,7 @@ data class Problem(
     @ColumnInfo(name = "solvable")
     val solvable: Boolean? = false,
     @ColumnInfo(name = "solved")
-    val solved: Boolean? = null,
+    val solved: Boolean? = false,
     @ColumnInfo(name = "reflection")
     val reflection: String? = null,
     @ColumnInfo(name = "distraction_id")

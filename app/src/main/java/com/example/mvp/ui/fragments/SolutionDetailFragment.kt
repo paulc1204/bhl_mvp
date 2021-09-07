@@ -57,7 +57,30 @@ class SolutionDetailFragment: Fragment() {
                 val action = SolutionDetailFragmentDirections.actionSolutionDetailFragmentToEvalSolutionFragment(solution.solution_id)
                 findNavController().navigate(action)
             }
+
+            markAsFinal.setOnClickListener {
+                confirmDecision()
+
+            }
         }
+    }
+
+    private fun confirmDecision(){
+        MaterialAlertDialogBuilder(requireContext())
+                .setTitle(getString(android.R.string.dialog_alert_title))
+                .setMessage(getString(R.string.final_solution_confirmation))
+                .setCancelable(false)
+                .setNegativeButton(getString(R.string.no)) { _, _ -> }
+                .setPositiveButton(getString(R.string.yes)) { _, _ ->
+                    deleteOtherSolutions()
+                    val action = SolutionDetailFragmentDirections.actionSolutionDetailFragmentToReflectionFragment(solution.solution_id)
+                    findNavController().navigate(action)
+                }
+                .show()
+    }
+
+    private fun deleteOtherSolutions(){
+        viewModel.deleteOtherSolutions(solution.solution_id, solution.problem_id)
     }
 
     private fun confirmDelete(){

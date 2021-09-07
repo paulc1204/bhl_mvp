@@ -48,8 +48,8 @@ class SolutionsFragment: Fragment() {
         binding.solutionsRecyclerView.adapter = adapter
 
         //updating the solutions list
-        viewModel.problemsWIthSolutions.observe(this.viewLifecycleOwner){ it ->
-            it.find { it.problem.problem_id == navigationArgs.problemId }
+        viewModel.problemsWIthSolutions.observe(this.viewLifecycleOwner){ problemsWithSolutions ->
+            problemsWithSolutions.find { it.problem.problem_id == navigationArgs.problemId }
                 ?.solutions
                 ?.let {
                     adapter.submitList(it)
