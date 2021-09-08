@@ -9,6 +9,7 @@
     <string name="solution">Solution</string>
     <string name="reflection">Reflection</string>
     <string name="distractions">Distractions</string>
+    <string name="mood_tracker">Mood Tracker</string>
     <string name="self_soothe">Self-soothe</string>
     <string name="title">Title</string>
     <string name="instructions">Instructions</string>
@@ -20,6 +21,7 @@
     <string name="save">Save</string>
     <string name="tried">Tried?</string>
     <string name="select_category">Categorize your problem</string>
+    <string name="reflection_question">What have you learnt?</string>
     <string name="category_work">Work</string>
     <string name="category_love">Love</string>
     <string name="category_health">Health</string>
@@ -35,17 +37,22 @@
     <string name="delete">Delete</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="ok">OK</string>
 
     <string name="final_solution">Mark as Final Solution</string>
     <string name="final_solution_confirmation">This solution will be marked as final and all other candidate solutions will be deleted.</string>
+    <string name="final_solution_not_doable">Would you like to go back to the list and find a solution that can be implemented?</string>
+
     <string name="resolve_problem">Resolve Problem</string>
     <string name="resolved_problems">Resolved Problems</string>
     <string name="delete_confirmation">Are you sure you want to delete?</string>
     <string name="ask_solvability">Can you do something about this problem?</string>
-    <string name="can_you_do_it">Can you do it?</string>
+    <string name="can_you_do_it">Can this solution be done?</string>
     <string name="to_problem_list">Go to Problem List</string>
     <string name="to_solutions">Go to Solutions</string>
     <string name="evaluate_solution">Evaluate Solution</string>
+    <string name="evaluate_instruction">Evaluate the solutions you\'ve come up with</string>
+    <string name="go_back">Go Back</string>
     <string name="how_to_distract">How do i distract myself?</string>
     <string name="activities_list">Activities List</string>
 
@@ -55,6 +62,7 @@
     <string name="sln_instruction2">2. Shortlist the solutions that seem the most feasible.</string>
     <string name="sln_instruction3">3. Evaluate the pros &amp; cons of each feasible solution</string>
     <string name="sln_instruction4">4. Choose the ultimate solution that can be implemented</string>
+    <string name="second_stage_instruction">Evaluate the pros &amp; cons of each solution and delete the ones that seem less feasible. Then, decide on the ultimate solution that you think would be the most helpful.</string>
 
     <string name="problem_title_req">Title <font color='#FF0000'>*</font></string>
     <string name="problem_description_req">Description <font color='#FF0000'>*</font></string>

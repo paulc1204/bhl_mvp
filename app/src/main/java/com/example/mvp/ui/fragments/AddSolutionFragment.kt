@@ -49,17 +49,13 @@ class AddSolutionFragment: Fragment() {
 
     private fun addNewSolution(){
         if(isEntryValid()){
-            val btnId = binding.yesOrNo.checkedRadioButtonId
-
             val title = binding.solutionTitle.text.toString()
             val description = binding.solutionDescription.text.toString()
-            val solvable = binding.yesOrNo.findViewById<RadioButton>(btnId).text.toString() == "Yes"
 
             viewModel.addNewSolution(
                 problem_id = navigationArgs.problemId,
                 title = title,
-                description = description,
-                solvable = solvable
+                description = description
             )
 
             val action = AddSolutionFragmentDirections.actionAddSolutionFragmentToSolutionsFragment(navigationArgs.problemId)
@@ -68,16 +64,13 @@ class AddSolutionFragment: Fragment() {
     }
 
     private fun updateSolution(){
-        val btnId = binding.yesOrNo.checkedRadioButtonId
-        val solvable = binding.yesOrNo.findViewById<RadioButton>(btnId).text.toString() == "Yes"
         val title = binding.solutionTitle.text.toString()
         val description = binding.solutionDescription.text.toString()
 
         viewModel.updateSolution(
             solution_id = navigationArgs.solutionId,
             title = title,
-            description = description,
-            solvable = solvable
+            description = description
         )
 
         val action = AddSolutionFragmentDirections.actionAddSolutionFragmentToSolutionsFragment(navigationArgs.problemId)
@@ -88,11 +81,6 @@ class AddSolutionFragment: Fragment() {
         binding.apply{
             solutionTitle.setText(solution.title, TextView.BufferType.SPANNABLE)
             solutionDescription.setText(solution.description, TextView.BufferType.SPANNABLE)
-            if(solution.solvable){
-                yesOrNo.check(btnYes.id)
-            }else{
-                yesOrNo.check(btnNo.id)
-            }
         }
 
         binding.buttonSave.setOnClickListener {

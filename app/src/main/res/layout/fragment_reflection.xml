@@ -9,16 +9,26 @@
         android:layout_margin="@dimen/margin"
         tools:context=".ui.fragments.ReflectionFragment">
 
+        <TextView
+            android:id="@+id/reflection_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_start"
+            android:text="@string/reflection_question"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/reflection_label"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin"
+            android:layout_marginTop="@dimen/margin_between_elements"
             android:hint="@string/reflection_req"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/reflection_question">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/reflection_content"
@@ -30,14 +40,44 @@
                 android:maxLines="12" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <TextView
+            android:id="@+id/question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin"
+            android:text="@string/can_you_do_it"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@+id/reflection_label" />
+
+        <RadioGroup
+            android:id="@+id/yes_or_no"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checkedButton="@id/btn_yes"
+            android:layout_marginTop="@dimen/margin_between_elements"
+            app:layout_constraintTop_toBottomOf="@+id/question">
+
+            <RadioButton
+                android:id="@+id/btn_yes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/yes"/>
+
+            <RadioButton
+                android:id="@+id/btn_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/no"/>
+        </RadioGroup>
+
         <Button
             android:id="@+id/buttonSave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/save"
             android:layout_marginTop="@dimen/margin_start"
+            android:text="@string/save"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/reflection_label" />
+            app:layout_constraintTop_toBottomOf="@+id/yes_or_no" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

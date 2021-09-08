@@ -1,7 +1,6 @@
 package com.example.mvp.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -93,11 +92,6 @@ class SolvedProblemDetailFragment: Fragment() {
             bind()
         }
 
-//        viewModel.problemsWIthSolutions.observe(this.viewLifecycleOwner) { problemWithSolutions ->
-//            solution = problemWithSolutions.find { it.problem.problem_id == problem.problem_id }
-//                    ?.solutions?.get(0)!!
-//            bindSolution()
-//        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

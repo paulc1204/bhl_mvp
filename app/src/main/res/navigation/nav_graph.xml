@@ -88,11 +88,11 @@
             android:name="problem_id"
             app:argType="integer" />
         <action
-            android:id="@+id/action_askSolutionFragment_to_solutionsFragment"
-            app:destination="@id/solutionsFragment" />
-        <action
             android:id="@+id/action_askSolutionFragment_to_distractionOptionsFragment"
             app:destination="@id/distractionOptionsFragment" />
+        <action
+            android:id="@+id/action_askSolutionFragment_to_solutionInstructionsFragment"
+            app:destination="@id/solutionInstructionsFragment" />
     </fragment>
     <fragment
         android:id="@+id/solutionsFragment"
@@ -112,6 +112,9 @@
         <action
             android:id="@+id/action_solutionsFragment_to_addSolutionFragment"
             app:destination="@id/addSolutionFragment" />
+        <action
+            android:id="@+id/action_solutionsFragment_to_secondSolutionsFragment"
+            app:destination="@id/secondSolutionsFragment" />
     </fragment>
     <fragment
         android:id="@+id/solutionDetailFragment"
@@ -132,6 +135,10 @@
         <action
             android:id="@+id/action_solutionDetailFragment_to_reflectionFragment"
             app:destination="@id/reflectionFragment" />
+        <argument
+            android:name="eval_stage"
+            app:argType="boolean"
+            android:defaultValue="false" />
     </fragment>
     <fragment
         android:id="@+id/addSolutionFragment"
@@ -156,7 +163,15 @@
     <fragment
         android:id="@+id/solutionInstructionsFragment"
         android:name="com.example.mvp.ui.fragments.SolutionInstructionsFragment"
-        android:label="Problem Solving Steps" />
+        android:label="Problem Solving Steps" >
+        <argument
+            android:name="problem_id"
+            app:argType="integer"
+            android:defaultValue="-1" />
+        <action
+            android:id="@+id/action_solutionInstructionsFragment_to_solutionsFragment"
+            app:destination="@id/solutionsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/distractionOptionsFragment"
         android:name="com.example.mvp.ui.fragments.DistractionOptionsFragment"
@@ -237,6 +252,11 @@
             app:destination="@id/problemsFragment"
             app:popUpTo="@id/problemsFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_reflectionFragment_to_solutionsFragment"
+            app:destination="@id/solutionsFragment"
+            app:popUpTo="@id/solutionsFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/solvedProblemDetailFragment"
@@ -247,5 +267,16 @@
         <action
             android:id="@+id/action_solvedProblemDetailFragment_to_addProblemFragment"
             app:destination="@id/addProblemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/secondSolutionsFragment"
+        android:name="com.example.mvp.ui.fragments.SecondSolutionsFragment"
+        android:label="Solutions">
+        <argument
+            android:name="problem_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_secondSolutionsFragment_to_solutionDetailFragment"
+            app:destination="@id/solutionDetailFragment" />
     </fragment>
 </navigation>

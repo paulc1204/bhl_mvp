@@ -70,11 +70,14 @@ interface ProblemDao {
     @Update
     suspend fun updateSolution(solution: Solution)
 
-    @Query("UPDATE solutions SET title = :title, description = :description, solvable = :solvable WHERE solution_id = :solution_id")
-    suspend fun updateSolution(solution_id: Int, title: String, description: String, solvable: Boolean)
+    @Query("UPDATE solutions SET title = :title, description = :description WHERE solution_id = :solution_id")
+    suspend fun updateSolution(solution_id: Int, title: String, description: String)
 
     @Query("UPDATE solutions SET pros = :pros, cons = :cons WHERE solution_id = :solution_id")
     suspend fun updateSolutionEval(pros: String, cons: String, solution_id: Int)
+
+    @Query("UPDATE solutions SET solvable = :solvable WHERE solution_id = :solution_id")
+    suspend fun updateSolutionSolvability(solvable: Boolean, solution_id: Int)
 
     @Query("DELETE from solutions WHERE problem_id = :problem_id")
     suspend fun deleteSolutions(problem_id: Int)

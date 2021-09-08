@@ -30,6 +30,12 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
         }
     }
 
+    fun updateSolutionSolvability(solvable: Boolean, solution_id: Int){
+        viewModelScope.launch {
+            problemDao.updateSolutionSolvability(solvable, solution_id)
+        }
+    }
+
     fun updateSolutionEval(solution_id: Int, pros: String, cons: String){
         viewModelScope.launch {
             problemDao.updateSolutionEval(pros, cons, solution_id)
@@ -41,17 +47,16 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
     * passed to [SolutionsFragment] to query corresponding solutions
     * */
     fun getLatestProblemId(): Int = runBlocking{
-            problemDao.getLatestProblemId()
-        }
+        problemDao.getLatestProblemId()
+    }
 
     fun updateSolution(
         solution_id: Int,
         title: String,
-        description: String,
-        solvable: Boolean
+        description: String
     ){
         viewModelScope.launch {
-            problemDao.updateSolution(solution_id, title, description, solvable)
+            problemDao.updateSolution(solution_id, title, description)
         }
     }
 
@@ -85,8 +90,8 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
         }
     }
 
-    fun addNewSolution(problem_id: Int, title: String, description: String, solvable: Boolean){
-        val newSolution = getNewSolutionEntry(problem_id, title, description, solvable)
+    fun addNewSolution(problem_id: Int, title: String, description: String){
+        val newSolution = getNewSolutionEntry(problem_id, title, description)
         insertSolution(newSolution)
     }
 
@@ -105,12 +110,11 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
         )
     }
 
-    private fun getNewSolutionEntry(problem_id: Int, title: String, description: String, solvable: Boolean): Solution{
+    private fun getNewSolutionEntry(problem_id: Int, title: String, description: String): Solution{
         return Solution(
             problem_id = problem_id,
             title = title,
-            description = description,
-            solvable = solvable
+            description = description
         )
     }
 

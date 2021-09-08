@@ -23,7 +23,7 @@ class SolutionsFragment: Fragment() {
         )
     }
 
-    private val navigationArgs: AskSolutionFragmentArgs by navArgs()
+    private val navigationArgs: SolutionsFragmentArgs by navArgs()
     private var _binding: FragmentSolutionsBinding? = null
     private val binding get() = _binding!!
 
@@ -71,6 +71,11 @@ class SolutionsFragment: Fragment() {
 
         binding.toProblemListBtn.setOnClickListener {
             val action = SolutionsFragmentDirections.actionSolutionsFragmentToProblemsFragment()
+            this.findNavController().navigate(action)
+        }
+
+        binding.toNext.setOnClickListener {
+            val action = SolutionsFragmentDirections.actionSolutionsFragmentToSecondSolutionsFragment(navigationArgs.problemId)
             this.findNavController().navigate(action)
         }
 

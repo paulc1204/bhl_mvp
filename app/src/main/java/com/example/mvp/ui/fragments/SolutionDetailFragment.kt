@@ -43,6 +43,8 @@ class SolutionDetailFragment: Fragment() {
     }
 
     private fun bind(){
+        val evalStage = navigationArgs.evalStage
+
         binding.apply{
             solutionTitle.text = solution.title
             solutionDescription.text = solution.description
@@ -53,19 +55,22 @@ class SolutionDetailFragment: Fragment() {
                 consContent.text = solution.cons
             }
 
+            if(evalStage){ btnGroup.visibility = View.VISIBLE }
+
             btnEval.setOnClickListener {
                 val action = SolutionDetailFragmentDirections.actionSolutionDetailFragmentToEvalSolutionFragment(solution.solution_id)
                 findNavController().navigate(action)
             }
 
             markAsFinal.setOnClickListener {
-                confirmDecision()
-
+//                confirmFinalSolution()
+                val action = SolutionDetailFragmentDirections.actionSolutionDetailFragmentToReflectionFragment(solution.solution_id)
+                findNavController().navigate(action)
             }
         }
     }
 
-    private fun confirmDecision(){
+    private fun confirmFinalSolution(){
         MaterialAlertDialogBuilder(requireContext())
                 .setTitle(getString(android.R.string.dialog_alert_title))
                 .setMessage(getString(R.string.final_solution_confirmation))

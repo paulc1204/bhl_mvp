@@ -38,7 +38,7 @@ class AskSolutionFragment: Fragment() {
 
     private fun onSolvable(problem_id: Int){
         viewModel.updateSolvability(true, problem_id)
-        val action = AskSolutionFragmentDirections.actionAskSolutionFragmentToSolutionsFragment(problem_id)
+        val action = AskSolutionFragmentDirections.actionAskSolutionFragmentToSolutionInstructionsFragment(problem_id)
         findNavController().navigate(action)
     }
 

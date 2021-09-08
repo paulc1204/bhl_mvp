@@ -36,7 +36,7 @@ class SolutionListAdapter(private val onSolutionClicked: (Solution) -> Unit):
 
         fun bind(solution: Solution) {
             binding.solutionTitle.text = solution.title
-            binding.solutionTried.text = if(solution.solvable) "Yes" else "No"
+//            binding.solutionTried.text = if(solution.solvable) "Yes" else "No"
         }
     }
 

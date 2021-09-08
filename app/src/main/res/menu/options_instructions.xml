@@ -1,22 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/help_menu">
 
     <item
-        android:id="@+id/help_menu"
-        android:icon="@drawable/ic_baseline_more_vert_24"
-        android:title=""
-        app:showAsAction="always">
-
-        <menu>
-            <item
-                android:id="@+id/solutionInstructionsFragment"
-                android:icon="@drawable/ic_baseline_help_24"
-                android:title="@string/help"
-                android:menuCategory="secondary" />
-
-        </menu>
-    </item>
-
+        android:id="@+id/solutionInstructionsFragment"
+        android:icon="@drawable/ic_baseline_help_24"
+        android:title="@string/help"
+        app:showAsAction="always"
+        android:menuCategory="secondary" />
 
 </menu>

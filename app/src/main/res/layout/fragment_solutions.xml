@@ -26,20 +26,8 @@
             android:layout_marginTop="@dimen/margin_start"
             android:layout_marginEnd="@dimen/margin_between_elements"
             android:text="@string/title"
-            app:layout_constraintEnd_toStartOf="@+id/solution_tried"
             app:layout_constraintHorizontal_weight="3"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/problem_title" />
-
-        <TextView
-            android:id="@+id/solution_tried"
-            style="@style/Header"
-            android:layout_marginTop="@dimen/margin_start"
-            android:text="@string/tried"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toEndOf="@+id/solution_title"
             app:layout_constraintTop_toBottomOf="@id/problem_title" />
 
         <View
@@ -50,7 +38,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/solution_tried" />
+            app:layout_constraintTop_toBottomOf="@+id/solution_title" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/solutionsRecyclerView"
@@ -63,13 +51,25 @@
             app:layout_constraintTop_toBottomOf="@+id/divider" />
 
         <Button
-            android:id="@+id/toProblemListBtn"
+            android:id="@+id/to_next"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/toProblemListBtn"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="@dimen/margin_start"
+            android:text="@string/next" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/toProblemListBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_between_elements"
             android:layout_marginBottom="@dimen/margin_between_elements"
-            android:text="@string/to_problem_list"
-            app:layout_constraintBottom_toTopOf="@+id/addSolutionButton"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:contentDescription="@string/to_problem_list"
+            android:src="@drawable/ic_home"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:tint="@android:color/white" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/addSolutionButton"
