@@ -6,11 +6,14 @@ import androidx.lifecycle.*
 import com.example.mvp.data.entities.Problem
 import com.example.mvp.data.ProblemDao
 import com.example.mvp.data.entities.Distraction
+import com.example.mvp.data.entities.Mood
 import com.example.mvp.data.entities.Solution
 import com.example.mvp.data.relations.ProblemWIthSolutions
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import java.time.LocalDate
 import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
 
@@ -95,6 +98,11 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
         insertSolution(newSolution)
     }
 
+    fun addNewMood(level: Int){
+        val mood = Mood(LocalDate.now(), level)
+        insertMood(mood)
+    }
+
     fun addNewDistraction(title: String){
         val newDistraction = getNewDistractionEntry(title)
         insertDistraction(newDistraction)
@@ -154,6 +162,12 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
     private fun insertDistraction(distraction: Distraction){
         viewModelScope.launch {
             problemDao.insertDistraction(distraction)
+        }
+    }
+
+    private fun insertMood(mood: Mood){
+        viewModelScope.launch {
+            problemDao.insertMood(mood)
         }
     }
 

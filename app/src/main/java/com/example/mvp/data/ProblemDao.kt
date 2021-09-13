@@ -2,6 +2,7 @@ package com.example.mvp.data
 
 import androidx.room.*
 import com.example.mvp.data.entities.Distraction
+import com.example.mvp.data.entities.Mood
 import com.example.mvp.data.entities.Problem
 import com.example.mvp.data.entities.Solution
 import com.example.mvp.data.relations.ProblemWIthSolutions
@@ -19,6 +20,9 @@ interface ProblemDao {
 
     @Insert
     suspend fun insertDistraction(distraction: Distraction)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertMood(mood: Mood)
 
     @Transaction
     @Query("SELECT * from problems WHERE problem_id = :problem_id")
@@ -51,6 +55,9 @@ interface ProblemDao {
 
     @Query("SELECT * from distractions")
     fun getDistractions(): Flow<List<Distraction>>
+
+    @Query("SELECT * from mood LIMIT 10")
+    fun getMoods(): Flow<List<Mood>>
 
     @Query("SELECT timestamp from problems WHERE problem_id = :problem_id")
     fun getTimestamp(problem_id: Int): LocalDateTime

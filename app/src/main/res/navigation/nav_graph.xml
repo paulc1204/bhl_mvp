@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/problemsFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/problemsFragment"
@@ -179,6 +179,9 @@
         <action
             android:id="@+id/action_distractionOptionsFragment_to_distractionActivitiesFragment"
             app:destination="@id/distractionActivitiesFragment" />
+        <action
+            android:id="@+id/action_distractionOptionsFragment_to_distractionVideosFragment"
+            app:destination="@id/distractionVideosFragment" />
     </fragment>
     <fragment
         android:id="@+id/distractionActivitiesFragment"
@@ -227,10 +230,8 @@
             android:name="solution_id"
             app:argType="integer" />
         <action
-            android:id="@+id/action_evalSolutionFragment_to_solutionsFragment"
-            app:destination="@id/solutionsFragment"
-            app:popUpTo="@id/solutionsFragment"
-            app:popUpToInclusive="true"/>
+            android:id="@+id/action_evalSolutionFragment_to_secondSolutionsFragment"
+            app:destination="@id/secondSolutionsFragment" />
     </fragment>
     <fragment
         android:id="@+id/solvedProblemsFragment"
@@ -279,4 +280,28 @@
             android:id="@+id/action_secondSolutionsFragment_to_solutionDetailFragment"
             app:destination="@id/solutionDetailFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/distractionVideosFragment"
+        android:name="com.example.mvp.ui.fragments.DistractionVideosFragment"
+        android:label="Distraction videos" />
+    <fragment
+        android:id="@+id/introVideosFragment"
+        android:name="com.example.mvp.ui.fragments.IntroVideosFragment"
+        android:label="IntroVideosFragment" >
+        <action
+            android:id="@+id/action_introVideosFragment_to_problemsFragment"
+            app:destination="@id/problemsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.mvp.ui.fragments.HomeFragment"
+        android:label="Home">
+        <action
+            android:id="@+id/action_homeFragment_to_introVideosFragment"
+            app:destination="@id/introVideosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/moodTrackerFragment"
+        android:name="com.example.mvp.ui.fragments.MoodTrackerFragment"
+        android:label="MoodTrackerFragment" />
 </navigation>

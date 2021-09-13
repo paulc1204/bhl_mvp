@@ -26,7 +26,8 @@ class DistractionOptionsFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.howToDistract.setOnClickListener {
-            //to educational content
+            val action = DistractionOptionsFragmentDirections.actionDistractionOptionsFragmentToDistractionVideosFragment()
+            findNavController().navigate(action)
         }
 
         binding.toActivities.setOnClickListener {

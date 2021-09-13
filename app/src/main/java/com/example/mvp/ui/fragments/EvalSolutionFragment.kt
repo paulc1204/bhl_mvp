@@ -57,7 +57,7 @@ class EvalSolutionFragment: Fragment() {
                     binding.cons.text.toString()
             )
 
-            val action = EvalSolutionFragmentDirections.actionEvalSolutionFragmentToSolutionsFragment(solution.problem_id)
+            val action = EvalSolutionFragmentDirections.actionEvalSolutionFragmentToSecondSolutionsFragment(solution.problem_id)
             findNavController().navigate(action)
         }
     }

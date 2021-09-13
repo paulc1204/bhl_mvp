@@ -69,4 +69,19 @@
     <string name="reflection_req">Reflect on the experience <font color='#FF0000'>*</font></string>
     <string name="pros_req">Pros <font color='#FF0000'>*</font></string>
     <string name="cons_req">Cons <font color='#FF0000'>*</font></string>
+
+    <string name="how_are_you">Record your anxiety level</string>
+    <string name="anxiety_level">Anxiety Level</string>
+    <string-array name="mood_level">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
 </resources>
