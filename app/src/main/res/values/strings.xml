@@ -62,7 +62,9 @@
     <string name="sln_instruction2">2. Shortlist the solutions that seem the most feasible.</string>
     <string name="sln_instruction3">3. Evaluate the pros &amp; cons of each feasible solution</string>
     <string name="sln_instruction4">4. Choose the ultimate solution that can be implemented</string>
+    <string name="first_stage_instruction">Write down as many solutions as you can think of</string>
     <string name="second_stage_instruction">Evaluate the pros &amp; cons of each solution and delete the ones that seem less feasible. Then, decide on the ultimate solution that you think would be the most helpful.</string>
+
 
     <string name="problem_title_req">Title <font color='#FF0000'>*</font></string>
     <string name="problem_description_req">Description <font color='#FF0000'>*</font></string>
@@ -70,8 +72,10 @@
     <string name="pros_req">Pros <font color='#FF0000'>*</font></string>
     <string name="cons_req">Cons <font color='#FF0000'>*</font></string>
 
+    <string name="anxiety_trend">Anxiety Level Trend</string>
     <string name="how_are_you">Record your anxiety level</string>
     <string name="anxiety_level">Anxiety Level</string>
+    <string name="anxiety_added">Successfully logged!</string>
     <string-array name="mood_level">
         <item>1</item>
         <item>2</item>

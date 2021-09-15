@@ -51,6 +51,26 @@
             app:layout_constraintTop_toBottomOf="@id/textInput"
             android:layout_marginTop="@dimen/margin_start"/>
 
+        <TextView
+            android:id="@+id/chart_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/anxiety_trend"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_save"/>
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/moodLineChart"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            app:layout_constraintTop_toBottomOf="@+id/chart_title"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/margin" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

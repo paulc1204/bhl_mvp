@@ -20,6 +20,7 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
     val problems: LiveData<List<Problem>> = problemDao.getProblems().asLiveData()
     val problemsWIthSolutions: LiveData<List<ProblemWIthSolutions>> = problemDao.getProblemsWithSolutions().asLiveData()
     val distractions: LiveData<List<Distraction>> = problemDao.getDistractions().asLiveData()
+    val moodLevels: LiveData<List<Mood>> = problemDao.getMoods().asLiveData()
 
     fun updateCategory(title: String, description: String, category: String, problem_id: Int){
         viewModelScope.launch {

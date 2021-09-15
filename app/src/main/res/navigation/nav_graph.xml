@@ -231,7 +231,9 @@
             app:argType="integer" />
         <action
             android:id="@+id/action_evalSolutionFragment_to_secondSolutionsFragment"
-            app:destination="@id/secondSolutionsFragment" />
+            app:destination="@id/secondSolutionsFragment"
+            app:popUpTo="@id/solutionsFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/solvedProblemsFragment"
@@ -303,5 +305,5 @@
     <fragment
         android:id="@+id/moodTrackerFragment"
         android:name="com.example.mvp.ui.fragments.MoodTrackerFragment"
-        android:label="MoodTrackerFragment" />
+        android:label="Mood Tracker" />
 </navigation>

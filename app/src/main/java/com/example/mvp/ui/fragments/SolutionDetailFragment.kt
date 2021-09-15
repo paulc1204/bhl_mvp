@@ -49,13 +49,15 @@ class SolutionDetailFragment: Fragment() {
             solutionTitle.text = solution.title
             solutionDescription.text = solution.description
 
-            if(!solution.pros.isNullOrBlank() || !solution.cons.isNullOrBlank()){
+            if(evalStage){
+                btnGroup.visibility = View.VISIBLE
                 evalGroup.visibility = View.VISIBLE
+            }
+
+            if(!solution.pros.isNullOrBlank() || !solution.cons.isNullOrBlank()){
                 prosContent.text = solution.pros
                 consContent.text = solution.cons
             }
-
-            if(evalStage){ btnGroup.visibility = View.VISIBLE }
 
             btnEval.setOnClickListener {
                 val action = SolutionDetailFragmentDirections.actionSolutionDetailFragmentToEvalSolutionFragment(solution.solution_id)

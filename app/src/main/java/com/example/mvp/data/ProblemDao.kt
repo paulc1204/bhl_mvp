@@ -56,7 +56,7 @@ interface ProblemDao {
     @Query("SELECT * from distractions")
     fun getDistractions(): Flow<List<Distraction>>
 
-    @Query("SELECT * from mood LIMIT 10")
+    @Query("SELECT * from mood ORDER BY timestamp DESC LIMIT 7 ")
     fun getMoods(): Flow<List<Mood>>
 
     @Query("SELECT timestamp from problems WHERE problem_id = :problem_id")
