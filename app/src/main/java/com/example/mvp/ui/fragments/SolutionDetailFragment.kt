@@ -51,10 +51,10 @@ class SolutionDetailFragment: Fragment() {
 
             if(evalStage){
                 btnGroup.visibility = View.VISIBLE
-                evalGroup.visibility = View.VISIBLE
             }
 
             if(!solution.pros.isNullOrBlank() || !solution.cons.isNullOrBlank()){
+                evalGroup.visibility = View.VISIBLE
                 prosContent.text = solution.pros
                 consContent.text = solution.cons
             }
