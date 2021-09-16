@@ -67,13 +67,6 @@ class ProblemDetailFragment: Fragment() {
         findNavController().navigateUp()
     }
 
-    private fun resolveProblem(){
-        viewModel.resolveProblem(problem.problem_id)
-
-        val action = ProblemDetailFragmentDirections.actionProblemDetailFragmentToSolvedProblemsFragment()
-        findNavController().navigate(action)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -87,9 +80,6 @@ class ProblemDetailFragment: Fragment() {
             findNavController().navigate(action)
         }
 
-        binding.resolveProblem.setOnClickListener {
-//            resolveProblem()
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
