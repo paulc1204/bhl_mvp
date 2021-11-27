@@ -53,11 +53,11 @@ class SolutionDetailFragment: Fragment() {
                 btnGroup.visibility = View.VISIBLE
             }
 
-            if(!solution.pros.isNullOrBlank() || !solution.cons.isNullOrBlank()){
-                evalGroup.visibility = View.VISIBLE
-                prosContent.text = solution.pros
-                consContent.text = solution.cons
-            }
+//            if(!solution.pros.isNullOrBlank() || !solution.cons.isNullOrBlank()){
+//                evalGroup.visibility = View.VISIBLE
+//                prosContent.text = solution.pros
+//                consContent.text = solution.cons
+//            }
 
             btnEval.setOnClickListener {
                 val action = SolutionDetailFragmentDirections.actionSolutionDetailFragmentToEvalSolutionFragment(solution.solution_id)
@@ -65,29 +65,10 @@ class SolutionDetailFragment: Fragment() {
             }
 
             markAsFinal.setOnClickListener {
-//                confirmFinalSolution()
                 val action = SolutionDetailFragmentDirections.actionSolutionDetailFragmentToReflectionFragment(solution.solution_id)
                 findNavController().navigate(action)
             }
         }
-    }
-
-    private fun confirmFinalSolution(){
-        MaterialAlertDialogBuilder(requireContext())
-                .setTitle(getString(android.R.string.dialog_alert_title))
-                .setMessage(getString(R.string.final_solution_confirmation))
-                .setCancelable(false)
-                .setNegativeButton(getString(R.string.no)) { _, _ -> }
-                .setPositiveButton(getString(R.string.yes)) { _, _ ->
-                    deleteOtherSolutions()
-                    val action = SolutionDetailFragmentDirections.actionSolutionDetailFragmentToReflectionFragment(solution.solution_id)
-                    findNavController().navigate(action)
-                }
-                .show()
-    }
-
-    private fun deleteOtherSolutions(){
-        viewModel.deleteOtherSolutions(solution.solution_id, solution.problem_id)
     }
 
     private fun confirmDelete(){

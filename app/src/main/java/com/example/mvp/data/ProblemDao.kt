@@ -1,11 +1,10 @@
 package com.example.mvp.data
 
 import androidx.room.*
-import com.example.mvp.data.entities.Distraction
-import com.example.mvp.data.entities.Mood
-import com.example.mvp.data.entities.Problem
-import com.example.mvp.data.entities.Solution
+import com.example.mvp.data.entities.*
 import com.example.mvp.data.relations.ProblemWIthSolutions
+import com.example.mvp.data.relations.SolutionWithCons
+import com.example.mvp.data.relations.SolutionWithPros
 import kotlinx.coroutines.flow.Flow
 import java.time.LocalDateTime
 
@@ -13,7 +12,7 @@ import java.time.LocalDateTime
 interface ProblemDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(problem: Problem)
+    suspend fun insertProblem(problem: Problem)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertSolution(solution: Solution)
@@ -24,13 +23,26 @@ interface ProblemDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMood(mood: Mood)
 
-    @Transaction
-    @Query("SELECT * from problems WHERE problem_id = :problem_id")
-    fun getProblemWithSolutions(problem_id: Int): Flow<ProblemWIthSolutions>
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertReflection(reflection: Reflection)
+
+    @Insert
+    suspend fun insertPro(pro: Pros)
+
+    @Insert
+    suspend fun insertCon(con: Cons)
 
     @Transaction
     @Query("SELECT * from problems")
     fun getProblemsWithSolutions(): Flow<List<ProblemWIthSolutions>>
+
+    @Transaction
+    @Query("SELECT * from solutions")
+    fun getSolutionsWithPros(): Flow<List<SolutionWithPros>>
+
+    @Transaction
+    @Query("SELECT * from solutions")
+    fun getSolutionsWithCons(): Flow<List<SolutionWithCons>>
 
     @Query("SELECT * from problems")
     fun getProblems(): Flow<List<Problem>>
@@ -80,14 +92,20 @@ interface ProblemDao {
     @Query("UPDATE solutions SET title = :title, description = :description WHERE solution_id = :solution_id")
     suspend fun updateSolution(solution_id: Int, title: String, description: String)
 
-    @Query("UPDATE solutions SET pros = :pros, cons = :cons WHERE solution_id = :solution_id")
-    suspend fun updateSolutionEval(pros: String, cons: String, solution_id: Int)
+//    @Query("UPDATE solutions SET pros = :pros, cons = :cons WHERE solution_id = :solution_id")
+//    suspend fun updateSolutionEval(pros: String, cons: String, solution_id: Int)
 
     @Query("UPDATE solutions SET solvable = :solvable WHERE solution_id = :solution_id")
     suspend fun updateSolutionSolvability(solvable: Boolean, solution_id: Int)
 
     @Query("DELETE from solutions WHERE problem_id = :problem_id")
     suspend fun deleteSolutions(problem_id: Int)
+
+    @Query("DELETE from pros WHERE solution_id = :solution_id")
+    suspend fun deletePros(solution_id: Int)
+
+    @Query("DELETE from cons WHERE solution_id = :solution_id")
+    suspend fun deleteCons(solution_id: Int)
 
     @Query("DELETE from solutions WHERE solution_id != :solution_id AND problem_id = :problem_id")
     suspend fun deleteOtherSolutions(solution_id: Int, problem_id: Int)
@@ -97,6 +115,12 @@ interface ProblemDao {
 
     @Delete
     suspend fun delete(solution: Solution)
+
+    @Delete
+    suspend fun delete(pro: Pros)
+
+    @Delete
+    suspend fun delete(con: Cons)
 
     @Delete
     suspend fun delete(distraction: Distraction)

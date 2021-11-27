@@ -40,8 +40,9 @@ class EvalSolutionFragment: Fragment() {
 
     private fun bind(){
         binding.apply {
-            pros.setText(solution.pros?: "", TextView.BufferType.SPANNABLE)
-            cons.setText(solution.cons?: "", TextView.BufferType.SPANNABLE)
+            //bind to the recyclerView showing a list of pros and cons. see if each item can be editable/deletable from the list
+//            pros.setText(solution.pros?: "", TextView.BufferType.SPANNABLE)
+//            cons.setText(solution.cons?: "", TextView.BufferType.SPANNABLE)
 
             buttonSave.setOnClickListener {
                 save()
@@ -51,11 +52,18 @@ class EvalSolutionFragment: Fragment() {
 
     private fun save(){
         if(isEntryValid()){
-            viewModel.updateSolutionEval(
-                    solution.solution_id,
-                    binding.pros.text.toString(),
-                    binding.cons.text.toString()
-            )
+//            viewModel.updateSolutionEval(
+//                    solution.solution_id,
+//                    binding.pros.text.toString(),
+//                    binding.cons.text.toString()
+//            )
+            if (binding.pros.text.toString().isNotBlank()){
+                viewModel.addNewPro(solution.solution_id, binding.pros.text.toString())
+            }
+
+            if (binding.cons.text.toString().isNotBlank()){
+                viewModel.addNewCon(solution.solution_id, binding.cons.text.toString())
+            }
 
             val action = EvalSolutionFragmentDirections.actionEvalSolutionFragmentToSecondSolutionsFragment(solution.problem_id)
             findNavController().navigate(action)

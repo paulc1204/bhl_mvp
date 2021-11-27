@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import java.time.LocalDateTime
 
 @Entity(tableName = "solutions")
 data class Solution(
@@ -18,8 +19,10 @@ data class Solution(
     val description: String,
     @ColumnInfo(name = "solvable")
     val solvable: Boolean? = null,
-    @ColumnInfo(name = "pros")
-    val pros: String? = null,
-    @ColumnInfo(name = "cons")
-    val cons: String? = null
+    @ColumnInfo(name = "tried")
+    val tried: Boolean? = false,
+    @ColumnInfo(name = "helful")
+    val helpful: Boolean? = null,
+    @ColumnInfo(name = "sched_time")
+    val sched_time: LocalDateTime? = null
 )

@@ -3,12 +3,11 @@ package com.example.mvp.viewmodels
 import android.util.Log
 import android.util.Log.*
 import androidx.lifecycle.*
-import com.example.mvp.data.entities.Problem
 import com.example.mvp.data.ProblemDao
-import com.example.mvp.data.entities.Distraction
-import com.example.mvp.data.entities.Mood
-import com.example.mvp.data.entities.Solution
+import com.example.mvp.data.entities.*
 import com.example.mvp.data.relations.ProblemWIthSolutions
+import com.example.mvp.data.relations.SolutionWithCons
+import com.example.mvp.data.relations.SolutionWithPros
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.time.LocalDate
@@ -19,6 +18,8 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
 
     val problems: LiveData<List<Problem>> = problemDao.getProblems().asLiveData()
     val problemsWIthSolutions: LiveData<List<ProblemWIthSolutions>> = problemDao.getProblemsWithSolutions().asLiveData()
+    val solutionsWithPros: LiveData<List<SolutionWithPros>> = problemDao.getSolutionsWithPros().asLiveData()
+    val solutionsWithCons: LiveData<List<SolutionWithCons>> = problemDao.getSolutionsWithCons().asLiveData()
     val distractions: LiveData<List<Distraction>> = problemDao.getDistractions().asLiveData()
     val moodLevels: LiveData<List<Mood>> = problemDao.getMoods().asLiveData()
 
@@ -40,11 +41,11 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
         }
     }
 
-    fun updateSolutionEval(solution_id: Int, pros: String, cons: String){
-        viewModelScope.launch {
-            problemDao.updateSolutionEval(pros, cons, solution_id)
-        }
-    }
+//    fun updateSolutionEval(solution_id: Int, pros: String, cons: String){
+//        viewModelScope.launch {
+//            problemDao.updateSolutionEval(pros, cons, solution_id)
+//        }
+//    }
 
     /*
     * Return id of last added problem entry
@@ -99,6 +100,16 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
         insertSolution(newSolution)
     }
 
+    fun addNewPro(solution_id: Int, description: String){
+        val pro = getNewProEntry(solution_id, description)
+        insertPro(pro)
+    }
+
+    fun addNewCon(solution_id: Int, description: String){
+        val con = getNewConEntry(solution_id, description)
+        insertCon(con)
+    }
+
     fun addNewMood(level: Int){
         val mood = Mood(LocalDate.now(), level)
         insertMood(mood)
@@ -127,6 +138,14 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
         )
     }
 
+    private fun getNewProEntry(solution_id: Int, description: String): Pros{
+        return Pros(solution_id = solution_id, description = description)
+    }
+
+    private fun getNewConEntry(solution_id: Int, description: String): Cons{
+        return Cons(solution_id = solution_id, description = description)
+    }
+
     private fun getNewDistractionEntry(title: String): Distraction = Distraction(title = title)
 
     /*
@@ -150,13 +169,25 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
 
     private fun insertProblem(problem: Problem){
         viewModelScope.launch {
-            problemDao.insert(problem)
+            problemDao.insertProblem(problem)
         }
     }
 
     private fun insertSolution(solution: Solution){
         viewModelScope.launch {
             problemDao.insertSolution(solution)
+        }
+    }
+
+    private fun insertPro(pro: Pros){
+        viewModelScope.launch {
+            problemDao.insertPro(pro)
+        }
+    }
+
+    private fun insertCon(con: Cons){
+        viewModelScope.launch {
+            problemDao.insertCon(con)
         }
     }
 
@@ -172,6 +203,12 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
         }
     }
 
+    private fun insertReflection(reflection: Reflection){
+        viewModelScope.launch {
+            problemDao.insertReflection(reflection)
+        }
+    }
+
     fun deleteProblem(problem: Problem){
         viewModelScope.launch {
             problemDao.delete(problem)
@@ -184,9 +221,33 @@ class ProblemLogViewModel(private val problemDao: ProblemDao): ViewModel() {
         }
     }
 
+    fun deletePro(pro: Pros){
+        viewModelScope.launch {
+            problemDao.delete(pro)
+        }
+    }
+
+    fun deleteCon(con: Cons){
+        viewModelScope.launch {
+            problemDao.delete(con)
+        }
+    }
+
     fun deleteSolutions(problem_id: Int){
         viewModelScope.launch {
             problemDao.deleteSolutions(problem_id)
+        }
+    }
+
+    fun deletePros(solution_id: Int){
+        viewModelScope.launch {
+            problemDao.deletePros(solution_id)
+        }
+    }
+
+    fun deleteCons(solution_id: Int){
+        viewModelScope.launch {
+            problemDao.deleteCons(solution_id)
         }
     }
 
